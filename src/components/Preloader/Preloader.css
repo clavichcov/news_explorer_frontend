@@ -1,0 +1,26 @@
+.preloader__backdrop {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.preloader__backdrop--spinner {
+	display: block;
+	width: 74px;
+	height: 74px;
+	border: 4px solid #444;
+	border-bottom-color: #888;
+	border-radius: 50%;
+	animation: spin .75s infinite linear;
+}
+
+.preloader__backdrop--text{
+	
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

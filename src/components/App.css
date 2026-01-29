@@ -1,0 +1,13 @@
+#root {
+  width: 100%;
+  
+}
+
+.popup-route {
+    filter: blur(3px) brightness(0.7);
+    pointer-events: none; /* No interactuar con contenido detrás */
+}
+
+.popup-route > * {
+    pointer-events: none;
+}

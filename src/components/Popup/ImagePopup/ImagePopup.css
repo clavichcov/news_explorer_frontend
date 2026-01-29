@@ -1,0 +1,22 @@
+.popup__image-background {
+    position: relative;
+    display: flex;
+    max-width: 80%;
+    max-height: 80vh;
+    margin: auto;
+    flex-direction: column;
+    
+}
+
+.popup__image-title {    
+    color: #FFFFFF;
+    font-size: 24px;
+    font-family: 'Inter Black', Inter, sans-serif;
+    justify-self: unset;
+    margin: 10px 0;
+    padding: 10px;
+    /*background-color: rgba(0, 0, 0, 0.7);*/
+    width: auto;
+    height: 28px;
+    border-radius: 0 0 10px 10px;
+}

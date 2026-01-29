@@ -31,3 +31,5 @@ https://github.com/clavichcov/news_explorer_frontend
 
 ## 🚀 Direccion de producción
 
+ApiKey ThirdPartyApi.js
+bb038d706db04c6d8689ab4692d52f3e

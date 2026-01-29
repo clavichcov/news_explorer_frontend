@@ -1,0 +1,154 @@
+.savedheader {
+    position: relative;
+    display: flex;
+    width: 1440px;
+    height: 576px;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #000000;
+    overflow: visible;
+}
+
+.savedheader__bar {
+    display:block
+}
+
+.savedheader__bar--containt {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    max-width: 1440px;
+    height: 80px;
+    border-bottom: #c4c4c4 1px solid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    
+}
+
+.savedheader__bar--scrolled {
+    background-color: rgba(26, 27, 34, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.savedheader__bar--title {
+    height: 24px;
+    width: 200px;
+    margin: 0;
+    padding-left: 104px;
+    font-family: 'Roboto slab', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    
+}
+
+.savedheader__bar--container {
+    display: flex;
+    padding-right: 104px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 45px;
+    color: #ffffff;
+}
+
+.savedheader__button {
+    height: 80px;
+    background-color: transparent;
+    color: #1A1B22;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.savedheader__button:hover {
+    opacity: 0.8;
+    border-bottom: #1A1B22 2px solid;
+}
+
+.savedheader__button--togle {
+    width: 176px;
+    height: 48px;
+    border: #000000 1px solid;
+    border-radius: 24px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+}
+
+.savedheader__button--togle:hover {
+    opacity: 0.8;
+   border-bottom: #1A1B22 1px solid;
+}
+
+.savedheader__logout--icon {
+    margin: 0px;
+}
+
+.savedheader__content {
+    padding-top: 80px;
+    width: 608px;
+}
+
+.savedheader__title {
+    width: auto;
+    height: 92px;
+    margin: 0;
+    padding-top: 28px;
+    font-family: 'Roboto slab', sans-serif;
+    font-size: 40px;
+    line-height: 46px;
+    font-weight: 400;
+}
+
+.savedheader__text {
+    width: auto;
+    height: 24px;
+    margin: 0;
+    padding-top: 40px;
+    color: #1A1B2280;
+;
+}
+
+.savedheader__keywords {
+    width: auto;
+    height: 24px;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 80px;
+}
+
+.savedheader__search--input {
+    width: 584px;
+    padding: 0px 0px 0 24px;
+    height: 64px;
+    border-radius: 32px;
+    border: none;
+    font-size: 16px;
+    line-height: 22px;
+    }
+
+.savedheader__search--button {
+    position: relative;
+    top: -64px;
+    left: 440px;
+    width: 168px;
+    height: 64px;
+    border-radius: 32px;
+    border: none;
+    background-color: #2F71E5;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.savedheader__search--button:hover {
+    background-color: #347EFF;
+}
+
