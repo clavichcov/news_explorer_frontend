@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-dom";
 import { Card } from '../Card/Card.jsx';
-import { Preloader } from '../Preloader/preloader.jsx';
+import { Preloader } from '../Preloader/Preloader.jsx';
 import {IMAGES} from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
