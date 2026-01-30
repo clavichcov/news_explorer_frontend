@@ -5,7 +5,7 @@ import { Login } from '../components/Login/Login.jsx';
 import { Register }  from './Register/Register.jsx';
 import { Main } from './pages/Main/Main.jsx';
 import { Savednews } from './pages/Savednews/Savednews.jsx';
-import { SavedNewsHeader } from './Header/SavedNewsHeader.jsx';
+import { SavedNewsHeader } from './Header/Savednewsheader.jsx';
 import { Footer } from './Footer/Footer.jsx';
 import { Popup } from './Popup/Popup.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
