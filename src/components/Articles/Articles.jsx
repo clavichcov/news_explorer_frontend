@@ -4,7 +4,7 @@ import { Card } from '../Card/Card.jsx';
 import { Preloader } from '../Preloader/Preloader.jsx';
 import {IMAGES} from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
-import { newsApi } from '../../utils/ThirdPartyApi.js';
+import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
 
 export function Articles({ isLoggedIn, onLogout, currentPath }) {
