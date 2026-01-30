@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-d
 import './Savednewsheader.css'
 import {IMAGES} from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
-import { newsApi } from '../../utils/ThirdPartyApi.js';
+import { newsApi } from '../../utils/Thirdpartyapi.js';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 //import { removeToken } from "../../utils/Token.js";
 
