@@ -34,22 +34,14 @@ export const API_CONFIG = {
     API_KEY: ""
 };
     
-  // En producción: se sobreescriben desde .env
-  /*BASE_URL: process.env.REACT_APP_NEWS_API_BASE_URL || "https://newsapi.org/v2",
-  API_KEY: process.env.REACT_APP_NEWS_API_KEY || "bb038d706db04c6d8689ab4692d52f3e",
-  NEWS_SOURCE: process.env.REACT_APP_NEWS_API_SOURCE || "techcrunch",
-  */
+  
 
 export const THIRDPARTYAPI_CONFIG = {
   
     BASE_URL: "/newsapi",
-    API_KEY: "bb038d706db04c6d8689ab4692d52f3e",
+    API_KEY: "",
     NEWS_SOURCE: "techcrunch",
-  // En producción: se sobreescriben desde .env
-  /*BASE_URL: process.env.REACT_APP_NEWS_API_BASE_URL || "https://newsapi.org/v2",
-  API_KEY: process.env.REACT_APP_NEWS_API_KEY || "bb038d706db04c6d8689ab4692d52f3e",
-  NEWS_SOURCE: process.env.REACT_APP_NEWS_API_SOURCE || "techcrunch",
-  */
+  
 };
 
 
@@ -59,20 +51,14 @@ export const THIRDPARTYAPI_ENDPOINTS = {
   SOURCES: "/sources"
 };
 
-// Headers comunes
+
 export const DEFAULT_HEADERS = {
   'Content-Type': 'application/json'
 };
 
-// Mensajes de error
+
 export const ERROR_MESSAGES = {
   FETCH_FAILED: "Error al obtener datos de la API",
   INVALID_API_KEY: "API Key inválida",
   NETWORK_ERROR: "Error de conexión"
 };
-/*
-export const BASE_URLS = {
-  baseUrl: "http://sprint19.chickenkiller.com",
-  baseUrlWww: "http://www.sprint19.chickenkiller.com",
-  newsApi: "https://newsapi.org/v2/top-headlines?sources=techcrunch"
-};*/
