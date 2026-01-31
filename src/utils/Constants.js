@@ -11,6 +11,9 @@ import logout_normal from '../images/Icon/logout_normal.png'
 import logout_savednews from '../images/Icon/logout_savednews.png'
 import cardimg  from '../images/cardimg.png'
 
+const isDevelopment = window.location.hostname === 'localhost' || 
+                     window.location.hostname === '127.0.0.1';
+
 export const IMAGES = {
   
   line,
@@ -26,6 +29,9 @@ export const IMAGES = {
   cardimg,
   close_icon
 };
+
+
+
 export const API_CONFIG = {
   
     baseUrl: "/api", // Usa el proxy /api
@@ -38,8 +44,8 @@ export const API_CONFIG = {
 
 export const THIRDPARTYAPI_CONFIG = {
   
-    BASE_URL: "/newsapi",
-    API_KEY: "",
+    BASE_URL: isDevelopment ? "/newsapi" : "https://api.newsfinalsprint.chickenkiller.com/newsapi",
+    API_KEY: isDevelopment ? "bb038d706db04c6d8689ab4692d52f3e" : "",
     NEWS_SOURCE: "techcrunch",
   
 };

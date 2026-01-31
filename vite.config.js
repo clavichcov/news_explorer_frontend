@@ -9,7 +9,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'https://api.newsfinalsprint.chickenkiller.com',
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
@@ -20,14 +20,27 @@ export default defineConfig({
         }
       },
       '/newsapi': {
-        target: 'https://newsapi.org/v2',
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/newsapi/, ''),
+        
       }
 
   }
   
   },
+
+   build: {
+      outDir: 'dist',
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom']
+          }
+        }
+      }
+    },
+
   root: "./",
 })
