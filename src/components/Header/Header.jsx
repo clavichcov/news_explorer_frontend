@@ -72,6 +72,7 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
     };
 
     useEffect(() => {
+        console.log('useEffect de scroll ejecutándose');
         const handleScroll = () => {
             if (window.scrollY > 0) {
                 setIsScrolled(true);
