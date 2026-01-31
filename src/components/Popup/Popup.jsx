@@ -40,6 +40,7 @@ export function Popup (props) {
                     <>
                         {children}
                         <button
+                            style={{backgroundImage: `url(${IMAGES.close_icon})`}}
                             aria-label="Close modal"
                             className="popup--image-close-button"
                             type="button"
@@ -55,6 +56,7 @@ export function Popup (props) {
                     
                         </div>
                         <button
+                            style={{backgroundImage: `url(${IMAGES.close_icon})`}}
                             aria-label="Close modal"
                             className="popup__close_button"
                             type="button"
