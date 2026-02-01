@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation} from "react-router-dom";
 import './Header.css'
 import {IMAGES} from '../../utils/Constants.js';
-import { Login } from '../Login/Login.jsx';
 import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
@@ -50,13 +49,13 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
         .filter(word => word.length > 0) 
         .map(word => word.toLowerCase());
 
-        performSearch(searchInput.trim());
+        
 
         if (keywords.length === 0) {
             alert('Por favor ingresa al menos una palabra válida');
             return;
         }
-        
+        performSearch(searchInput.trim());
         try {
             const searchQuery = keywords.join(' ');
             const data = await newsApi.searchNews(searchQuery);
@@ -74,7 +73,7 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
     useEffect(() => {
         console.log('useEffect de scroll ejecutándose');
         const handleScroll = () => {
-            if (window.scrollY > 0) {
+            if (window.scrollY > 10) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -82,7 +81,7 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
         };
 
         window.addEventListener('scroll', handleScroll);
-        
+        handleScroll();
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };

@@ -224,9 +224,10 @@ function App() {
                                             <SavedNewsHeader 
                                                 isLoggedIn={isLoggedIn} 
                                                 onLogout={handleLogout}
-                                                isName={/*currentUser?.username || ''*/ "Tales"} 
+                                                isName={/*currentUser?.username || ''*/ "Tales"}
+                                                currentPath="/savednews"
                                             />
-                                            <Savednews isLoggedIn={isLoggedIn} onLogout={handleLogout}/>
+                                            <Savednews isLoggedIn={isLoggedIn} onLogout={handleLogout} currentPath="/savednews"/>
                                             <Footer currentPath="/savednews"/>
                                         </>
                                     </ProtectedRoute>

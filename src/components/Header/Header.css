@@ -1,24 +1,28 @@
 .header {
     position: relative;
     display: flex;
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;
     height: 576px;
     align-items: center;
     flex-direction: column;
     background-image: url("../../images/main_background.svg");
     color: #ffffff;
-    overflow: visible;
+    background-size: cover;
 }
 
 .header__bar {
-    display:block
-}
-
-.header__bar--containt {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1000;
+    display: block;
+}
+
+.header__bar--containt {
+    top: 0;
+    left: 0;
     z-index: 1000;
     display: flex;
     max-width: 1440px;
@@ -28,13 +32,14 @@
     align-items: center;
     justify-content: space-between;
     margin: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
     
 }
 
 .header__bar--scrolled {
     background-color: rgba(26, 27, 34, 0.5);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+    
 }
 
 .header__bar--title {
