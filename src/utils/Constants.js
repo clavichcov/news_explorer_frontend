@@ -44,7 +44,7 @@ export const API_CONFIG = {
 
 export const THIRDPARTYAPI_CONFIG = {
   
-    BASE_URL: isDevelopment ? "/newsapi" : "https://api.newsfinalsprint.chickenkiller.com/newsapi",
+    BASE_URL: "/newsapi",
     API_KEY: "bb038d706db04c6d8689ab4692d52f3e",
     NEWS_SOURCE: "techcrunch",
   
