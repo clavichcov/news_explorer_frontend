@@ -30,12 +30,9 @@ export const IMAGES = {
   close_icon
 };
 
-
-
 export const API_CONFIG = {
-  
-    baseUrl: "/api", // Usa el proxy /api
-    baseUrlApi: "/api", // También usa /api
+    baseUrl: "/api", 
+    baseUrlApi: "/api", 
     baseUrlWww: "http://www.newsfinalsprint.chickenkiller.com",
     API_KEY: ""
 };
@@ -43,7 +40,6 @@ export const API_CONFIG = {
   
 
 export const THIRDPARTYAPI_CONFIG = {
-  
     BASE_URL: "/newsapi",
     API_KEY: "bb038d706db04c6d8689ab4692d52f3e",
     NEWS_SOURCE: "techcrunch",

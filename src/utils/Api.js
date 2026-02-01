@@ -12,6 +12,14 @@ export class Api {
         }).then(this._checkResponse);
     }
   
+    signup({ email, password, name }) {
+        return fetch(`${this._baseUrl}/signup`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({ email, password, name }),
+        }).then(this._checkResponse);
+    }
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -77,6 +85,8 @@ export class Api {
         return this._makeRequest(`/cards/${cardId}/likes`, 'DELETE');
 
     }
+
+    
 
 }
 

@@ -17,7 +17,7 @@ import { SearchProvider } from '../contexts/SearchContext.jsx';
 import './App.css';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [popup, setPopup] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [userData, setUserData] = useState({username:"", email:"", name:"Tales"}); 
@@ -136,7 +136,6 @@ function App() {
             setIsPopupOpen(false);
         }
     }, [location.pathname]);
-
 
     return (
         <>
