@@ -101,7 +101,9 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                     <h2 className="articles__search--title">Resultados de búsqueda</h2>
                     
                     {isLoading ? (
-                        <Preloader />
+                        <div className="articles__preloader">
+                            <Preloader />
+                        </div>
                     ) : null}
                     
                     {!isLoading && cards.length > 0 ? (
