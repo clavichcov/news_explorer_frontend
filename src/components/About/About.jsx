@@ -1,5 +1,3 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-dom";
 import {IMAGES} from '../../utils/Constants.js';
 import './About.css'
 

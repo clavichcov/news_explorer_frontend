@@ -6,6 +6,7 @@
     margin: 0;
     justify-content: center;
     background-color: #000000;
+    width: 100%;
     max-width: 1440px;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
@@ -13,7 +14,7 @@
     font-weight: 400;
 }
 
-a, 
+/*a, 
 button, 
 [role="button"], 
 input[type="submit"], 
@@ -22,5 +23,27 @@ input[type="button"],
 .clickable,
 [onclick] {
     cursor: url('./images/cursors/Pointer.png') 12 12, pointer !important;
-}
+}*/
 
+@media screen and (max-width: 768px) {
+    .html, body{
+        max-width: 768px;
+        height: auto;
+    }
+   /* a, 
+    button, 
+    [role="button"], 
+    input[type="submit"], 
+    input[type="button"],
+    .card_content,
+    .clickable,
+    [onclick] {
+        cursor: url('./images/cursors/Pointer.png') 12 12, pointer !important;
+    }*/
+} 
+
+@media screen and (max-width: 320px) {
+    .html, body{
+        max-width: 320px;
+    }
+}

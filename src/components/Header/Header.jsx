@@ -59,7 +59,6 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
         try {
             const searchQuery = keywords.join(' ');
             const data = await newsApi.searchNews(searchQuery);
-            console.log('Resultados de búsqueda:', data.articles);
             const articlesSection = document.querySelector('.articles');
             if (articlesSection) {
                 articlesSection.scrollIntoView({ behavior: 'smooth' });
@@ -71,7 +70,6 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
     };
 
     useEffect(() => {
-        console.log('useEffect de scroll ejecutándose');
         const handleScroll = () => {
             if (window.scrollY > 10) {
                 setIsScrolled(true);

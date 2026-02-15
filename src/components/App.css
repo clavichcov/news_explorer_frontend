@@ -1,11 +1,12 @@
 #root {
   width: 100%;
-  
+  max-width: 1440px;
+  height: auto;
 }
 
 .popup-route {
     filter: blur(3px) brightness(0.7);
-    pointer-events: none; /* No interactuar con contenido detrás */
+    pointer-events: none;
 }
 
 .popup-route > * {

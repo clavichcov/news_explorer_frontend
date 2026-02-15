@@ -37,3 +37,46 @@
     margin: 0;
     padding-top: 24px;
 }
+
+@media screen and (max-width:768px){
+    .about {
+        
+    }
+
+    .about__image {
+        padding: 61px 32px 61px 40px;
+    }
+
+    .about__image--img {
+        width: 232px;
+        height: 232px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .about__description {
+        padding: 40px 40px 96px 0px;
+        width: 424px;
+        margin: 0;
+        
+    }
+
+    .about__title {
+        width: 100%;
+        height: 46px;
+        margin: 0;
+        font-family: 'Roboto slab', sans-serif;
+        font-size: 30px;
+        line-height: 40px;
+        font-weight: 400;
+    }
+
+    .about__text {
+        margin: 0;
+        padding-top: 24px;
+    }
+}
+
+@media screen and (max-width:320px){
+    
+}

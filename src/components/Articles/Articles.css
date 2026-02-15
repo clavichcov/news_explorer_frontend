@@ -79,3 +79,57 @@
     border: none;
     border-radius: 32px;
 }
+
+@media screen and (max-width:768px){
+    .articles {
+        max-width: 768px;
+        padding: 40px 40px 40px 40px !important;
+    }
+
+    .articles__search{
+        
+    }
+
+    .articles__preloader {
+        
+    }
+
+    .articles__search--title {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .articles__container {
+        
+    }
+
+    .articles__notfound {
+        
+    }
+
+    .articles__notfound--image {
+        
+    }
+
+    .articles__notfound--title {
+        
+    }
+
+    .articles__notfound--text {
+        
+    }
+
+    .articles__cards {
+        max-width: 688px;
+        grid-template-columns: repeat(3, 224px) !important;
+        gap: 8px !important;
+    }
+
+    .articles__button {
+        
+    }
+}
+
+@media screen and (max-width:320px){
+
+}

@@ -17,7 +17,7 @@ import { SearchProvider } from '../contexts/SearchContext.jsx';
 import './App.css';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [popup, setPopup] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [userData, setUserData] = useState({username:"", email:"", name:"Tales"}); 
@@ -106,6 +106,20 @@ function App() {
         }
         });
     };
+
+    useEffect(() => {
+        const checkBackground = () => {
+        const bgColor = window.getComputedStyle(document.body).backgroundColor;
+        
+        if (bgColor === "rgb(255, 255, 255)" || bgColor === "#ffffff") {
+            document.body.classList.add("dark-cursor");
+        } else {
+            document.body.classList.remove("dark-cursor");
+        }
+    };
+
+    checkBackground();
+    });
 
     useEffect(() => {
         const jwt = getToken();
