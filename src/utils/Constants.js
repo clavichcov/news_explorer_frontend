@@ -35,10 +35,10 @@ export const API_BASE_URL = isDevelopment
     : 'https://news-explorer-backend-seven.vercel.app';
 
 export const API_CONFIG = {
-    baseUrl: "API_BASE_URL", 
-    baseUrlApi: "API_BASE_URL", 
+    baseUrl: API_BASE_URL, 
+    baseUrlApi: API_BASE_URL, 
     //baseUrlWww: "http://www.newsfinalsprint.chickenkiller.com",
-    baseUrlWww: "API_BASE_URL",
+    baseUrlWww: API_BASE_URL,
     API_KEY: ""
 };
     
