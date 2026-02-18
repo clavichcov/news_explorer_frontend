@@ -3,6 +3,7 @@ import { API_CONFIG } from './Constants.js';
 export const BASE_URL = API_CONFIG.baseUrl;
 
 export const authorize = (email, password) => {
+    console.log('Intentando login con:', { email, password });
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
