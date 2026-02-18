@@ -30,18 +30,22 @@ export const IMAGES = {
   close_icon
 };
 
+export const API_BASE_URL = isDevelopment 
+    ? 'http://localhost:3001'
+    : 'https://news-explorer-backend-seven.vercel.app';
+
 export const API_CONFIG = {
-    baseUrl: "/api", 
-    baseUrlApi: "/api", 
+    baseUrl: "API_BASE_URL", 
+    baseUrlApi: "API_BASE_URL", 
     //baseUrlWww: "http://www.newsfinalsprint.chickenkiller.com",
-    baseUrlWww: "https://news-explorer-backend-seven.vercel.app/",
+    baseUrlWww: "API_BASE_URL",
     API_KEY: ""
 };
     
   
 
 export const THIRDPARTYAPI_CONFIG = {
-    BASE_URL: "/newsapi",
+    BASE_URL: `${API_BASE_URL}/newsapi`,
     API_KEY: "bb038d706db04c6d8689ab4692d52f3e",
     NEWS_SOURCE: "techcrunch",
   
