@@ -12,7 +12,7 @@ export default defineConfig({
         target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\//, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
         configure: (proxy, _options) => {
           proxy.on('proxyReq', (proxyReq, req, _res) => {
             console.log('Proxy Request:', req.method, req.url);
@@ -20,7 +20,8 @@ export default defineConfig({
         }
       },
       '/newsapi': {
-        target: 'http://localhost:3001',
+        //target: 'http://localhost:3001',
+        target: 'https://news-explorer-backend-seven.vercel.app/',
         changeOrigin: true,
         secure: false,
         

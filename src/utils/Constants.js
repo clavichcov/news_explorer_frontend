@@ -33,7 +33,8 @@ export const IMAGES = {
 export const API_CONFIG = {
     baseUrl: "/api", 
     baseUrlApi: "/api", 
-    baseUrlWww: "http://www.newsfinalsprint.chickenkiller.com",
+    //baseUrlWww: "http://www.newsfinalsprint.chickenkiller.com",
+    baseUrlWww: "https://news-explorer-backend-seven.vercel.app/",
     API_KEY: ""
 };
     
