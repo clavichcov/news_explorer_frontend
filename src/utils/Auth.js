@@ -16,6 +16,7 @@ export const authorize = (email, password) => {
         });
 };
 export const register = (email, password, name) => {
+    console.log('Enviando registro con:', { email, password, name });
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
@@ -26,6 +27,7 @@ export const register = (email, password, name) => {
 
     })
         .then((res) => {
+            console.log('Respuesta del servidor:', res.status);
             return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
         });
 };
