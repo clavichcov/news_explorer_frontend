@@ -17,7 +17,7 @@ import { SearchProvider } from '../contexts/SearchContext.jsx';
 import './App.css';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [popup, setPopup] = useState(null);
     const [isScrolled, setIsScrolled] = useState(false);
     const [userData, setUserData] = useState({username:"", email:"", name:"Tales"}); 
@@ -36,6 +36,11 @@ function App() {
         setPopupType('register');
         setIsPopupOpen(true);
     };
+
+    const openRegisterSuccessPopup = () => {
+        setPopupType('registerSuccess');
+        setIsPopupOpen(true);
+    }
 
     const closeAllPopups = () => {
         setIsPopupOpen(false);
@@ -76,8 +81,8 @@ function App() {
         
         auth.register(email, password, name)
             .then((data) => {
-                alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
-                setPopupType('login');
+                openRegisterSuccessPopup();
+                setPopupType('registerSuccess');
             })
             .catch(error => {
                 console.error("Error en registro:", error);
@@ -178,7 +183,7 @@ function App() {
                                         <Header 
                                             isLoggedIn={isLoggedIn}
                                             onLogout={handleLogout}
-                                            isName={/*currentUser?.username || ''*/ "Tales"}
+                                            isName={currentUser?.username || ''}
                                             currentPath="/"
                                         />
                                         <Main isLoggedIn={isLoggedIn} onLogout={handleLogout} currentPath="/" />
@@ -237,7 +242,7 @@ function App() {
                                             <SavedNewsHeader 
                                                 isLoggedIn={isLoggedIn} 
                                                 onLogout={handleLogout}
-                                                isName={/*currentUser?.username || ''*/ "Tales"}
+                                                isName={currentUser?.username || ''}
                                                 currentPath="/savednews"
                                             />
                                             <Savednews isLoggedIn={isLoggedIn} onLogout={handleLogout} currentPath="/savednews"/>

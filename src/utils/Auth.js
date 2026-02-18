@@ -17,7 +17,6 @@ export const authorize = (email, password) => {
         });
 };
 export const register = (email, password, name) => {
-    console.log('Enviando registro con:', { email, password, name });
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
@@ -28,7 +27,21 @@ export const register = (email, password, name) => {
 
     })
         .then((res) => {
-            console.log('Respuesta del servidor:', res.status);
+            return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+        });
+};
+
+export const saveArticle = (urlToImage, title, description, source, publishedAt, keyword) => {
+    return fetch(`${BASE_URL}/articles`, {
+        method: 'POST',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ urlToImage, title, description, source, publishedAt, keyword }),
+
+    })
+        .then((res) => {
             return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
         });
 };

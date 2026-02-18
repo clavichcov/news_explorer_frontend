@@ -20,6 +20,14 @@ export class Api {
         }).then(this._checkResponse);
     }
 
+    saveArticle({ urlToImage, title, description, source, publishedAt, keyword }) {
+        return fetch(`${this._baseUrl}/articles`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({ urlToImage, title, description, source, publishedAt, keyword }),
+        }).then(this._checkResponse);
+    }
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
