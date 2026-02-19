@@ -12,6 +12,11 @@ export function RegisterPopup({handleRegister}) {
     password: "",
     name: ""
   });
+  const [touched, setTouched] = useState({
+    email: false,
+    password: false,
+    name: false
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -64,6 +69,23 @@ export function RegisterPopup({handleRegister}) {
                   "name";
     const error = validateField(fieldName, value);
     setErrors(prev => ({ ...prev, [fieldName]: error }));
+    setTouched(prev => ({ ...prev, [fieldName]: true }));
+  };
+
+  const isFormValid = () => {
+    if (!touched.email || !touched.password || !touched.name) {
+      return false;
+    }
+    
+    if (errors.email || errors.password || errors.name || serverError) {
+      return false;
+    }
+    
+    if (!email.trim() || !password.trim() || !name.trim()) {
+      return false;
+    }
+    
+    return true;
   };
 
   const handleSubmit = async(e) => {
@@ -173,9 +195,9 @@ export function RegisterPopup({handleRegister}) {
           </span>
         )}
       <button 
-        className={`${errors.email || errors.password || errors.name ? 'form__login_submit-disabled' : 'form__login_submit-enabled'}`}
+        className={isFormValid() ? 'form__login_submit-enabled' : 'form__login_submit-disabled'}
         type="submit"
-        disabled={!!(errors.email || errors.password || errors.name)}
+        disabled={!isFormValid()}
       >
         Inscribirse
       </button>
