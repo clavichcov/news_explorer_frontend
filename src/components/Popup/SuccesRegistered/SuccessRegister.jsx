@@ -1,4 +1,4 @@
-import ' ./SuccesRegister.css';
+import './SuccessRegister.css';
 
 export function SuccesRegister(props) {
     const { title, link, onClose } = props;
