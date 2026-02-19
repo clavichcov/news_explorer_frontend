@@ -74,6 +74,7 @@ function App() {
     };
 
     const handleSuccessRegister = () => {
+        console.log('handleSuccessRegister called');
         navigate('/signin');
         openSuccessRegisterPopup();
     }
