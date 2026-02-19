@@ -76,7 +76,8 @@ function App() {
     const handleSuccessRegister = () => {
         console.log('handleSuccessRegister called');
         navigate('/signin');
-        
+        setPopupType('login');
+        openLoginPopup();
     }
 
     const handleRegister = ({ email, password, name }) => {
@@ -152,9 +153,11 @@ function App() {
     }, []);
     useEffect(() => {
         
-        if (location.pathname === '/signin' && setPopupType('successregister')) {
-            setPopupType('login');
-            setIsPopupOpen(true);
+        if (location.pathname === '/signin') {
+            if (popupType !== 'successregister') {
+                setPopupType('login');
+                setIsPopupOpen(true);
+            }
         } else if (location.pathname === '/signup') {
             setPopupType('register');
             setIsPopupOpen(true);
