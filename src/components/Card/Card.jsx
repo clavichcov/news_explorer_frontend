@@ -5,8 +5,12 @@ import './Card.css'
 export function Card({data, isLoggedIn, onLogout, currentPath}) {
     const [isHovered, setIsHovered] = useState(false);
     const tooltipRef = useRef(null);
+    
     const onSaveArticle = (data) => () => {
         console.log ('Guardar artículo con ID:', data);
+        if (!isLoggedIn) {
+            
+        }
     }
     
     function formatDate(dateString) {

@@ -147,7 +147,6 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                     )}
                 </div>
             </section>
-            
         </>
     );
     

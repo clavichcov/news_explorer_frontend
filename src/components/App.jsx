@@ -37,8 +37,8 @@ function App() {
         setIsPopupOpen(true);
     };
 
-    const openRegisterSuccessPopup = () => {
-        setPopupType('registerSuccess');
+    const openSuccessRegisterPopup = () => {
+        setPopupType('successRegister');
         setIsPopupOpen(true);
     }
 
@@ -81,8 +81,8 @@ function App() {
         
         auth.register(email, password, name)
             .then((data) => {
-                openRegisterSuccessPopup();
-                setPopupType('registerSuccess');
+                openSuccessRegisterPopup();
+                
             })
             .catch(error => {
                 console.error("Error en registro:", error);
@@ -98,6 +98,10 @@ function App() {
 
     };
 
+    const handleSuccessRegister = () => {
+
+    }
+    
     const createApiAcces = () => {
         const jwt = getToken();
         if (!jwt) return null;
@@ -153,7 +157,7 @@ function App() {
             setIsPopupOpen(true);
         } else {
             setIsPopupOpen(false);
-        }
+        }   
     }, [location.pathname]);
 
     return (
@@ -222,6 +226,7 @@ function App() {
                                             <Header 
                                             isLoggedIn={isLoggedIn}
                                             onLogout={handleLogout}
+                                            handleSuccessRegister={handleSuccessRegister}
                                             isName={currentUser?.username || ''}
                                             currentPath="/signup"
                                         />
