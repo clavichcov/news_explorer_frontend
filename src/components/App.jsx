@@ -76,7 +76,7 @@ function App() {
     const handleSuccessRegister = () => {
         console.log('handleSuccessRegister called');
         navigate('/signin');
-        openSuccessRegisterPopup();
+        
     }
 
     const handleRegister = ({ email, password, name }) => {
