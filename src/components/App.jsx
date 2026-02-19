@@ -89,7 +89,6 @@ function App() {
         
         auth.register(email, password, name)
             .then((data) => {
-                closeAllPopups();
                 openSuccessRegisterPopup();
             })
             .catch(error => {
