@@ -66,7 +66,7 @@ export function RegisterPopup({handleRegister}) {
     setErrors(prev => ({ ...prev, [fieldName]: error }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     
     const emailError = validateField("email", email);
