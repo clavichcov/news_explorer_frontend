@@ -1,4 +1,4 @@
-import { useState, use } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import './Register.css';
@@ -6,6 +6,7 @@ export function RegisterPopup({handleRegister}) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState({
     email: "",
     password: "",
@@ -81,9 +82,12 @@ export function RegisterPopup({handleRegister}) {
     if (emailError || passwordError || nameError) {
       return;
     }
-    
-    
-    handleRegister({ email, password, name });
+    try {
+      setServerError(""); 
+      await handleRegister({ email, password, name });
+    } catch (error) {
+        setServerError(error.message || "Error en el registro. Intenta nuevamente.");
+      } 
 
   };
   
@@ -160,12 +164,14 @@ export function RegisterPopup({handleRegister}) {
           {errors.name}
         </span>
       </label>
-      <span 
-          className={`form__popup--error ${errors.email ? "form__popup--error_active" : ""}`} 
-          id="name-input-error"
-        >
-          {errors.name}
-        </span>
+      {serverError && (
+          <span 
+            className="form__popup--error form__popup--error_active form__popup--error_server" 
+            id="server-error"
+          >
+            {serverError}
+          </span>
+        )}
       <button 
         className={`${errors.email || errors.password || errors.name ? 'form__login_submit-disabled' : 'form__login_submit-enabled'}`}
         type="submit"

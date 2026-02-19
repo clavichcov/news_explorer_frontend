@@ -132,6 +132,16 @@
     cursor: pointer;
 }
 
+.form__popup--error_server {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 500;
+  color: #ff0000;
+  background-color: rgba(255, 0, 0, 0.05);
+  padding: 8px;
+  border-radius: 4px;
+}
+
 @media screen and (max-width: 768px) {
     
 

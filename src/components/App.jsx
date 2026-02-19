@@ -80,7 +80,7 @@ function App() {
         openLoginPopup();
     }
 
-    const handleRegister = ({ email, password, name }) => {
+    const handleRegister = async ({ email, password, name }) => {
         
         if (!email || !password || !name) {
             alert('Por favor completa todos los campos');
@@ -93,7 +93,7 @@ function App() {
             })
             .catch(error => {
                 console.error("Error en registro:", error);
-                alert('Error en el registro. Por favor intenta nuevamente.');
+                throw new Error(error.message || 'Error en el registro');
             });
     };
     
