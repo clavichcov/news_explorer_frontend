@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-
 import { Header } from '../components/Header/Header.jsx';
 import { Login } from '../components/Login/Login.jsx';
 import { Register }  from './Register/Register.jsx';
-import { SuccessRegister } from './Popup/SuccesRegistered/SuccessRegister.jsx';
+import { SuccessRegister } from './Popup/SuccessRegister/SuccessRegister.jsx';
 import { Main } from './pages/Main/Main.jsx';
 import { Savednews } from './pages/Savednews/Savednews.jsx';
 import { SavedNewsHeader } from './Header/Savednewsheader.jsx';

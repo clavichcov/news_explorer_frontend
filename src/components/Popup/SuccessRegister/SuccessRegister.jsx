@@ -1,8 +1,6 @@
 import './SuccessRegister.css';
 
-export default function SuccessRegister(props) {
-    const { title, link, onClose } = props;
-  
+export function SuccessRegister(title, onClose) {
     const handleButtonClick = () => {
 
     }
