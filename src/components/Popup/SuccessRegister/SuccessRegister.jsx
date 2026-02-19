@@ -1,16 +1,17 @@
 import './SuccessRegister.css';
 
-export function SuccessRegister({title, onClose, handleSuccessRegister}) {
-    const handleButtonClick = () => {
-              if (handleSuccessRegister) {
+export function SuccessRegister(props) {
+  const {title, onClose, handleSuccessRegister} = props;
+  const handleButtonClick = () => {
+            if (handleSuccessRegister) {
                   handleSuccessRegister();
-              }
-              if (onClose) {
+            }
+            if (onClose) {
                   onClose();
-              }
+            }
     }
     
-    return (
+  return (
     <>
       <h2 
       className="popup__succes-title" 

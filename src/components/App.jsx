@@ -289,7 +289,7 @@ function App() {
                                 onClose={closeAllPopups} 
                                 title={ popupType === 'login' ? "Iniciar sesión" :
                                         popupType === 'register' ? "Inscribirse" :
-                                        popupType === 'successRegister' ? "¡El registro se ha completado éxito!" : ""}
+                                        popupType === 'successregister' ? "¡El registro se ha completado éxito!" : ""}
                             >
                                 {popupType === 'login' && (
                                     <Login handleLogin={handleLogin} />
