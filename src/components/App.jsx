@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-
 import { Header } from '../components/Header/Header.jsx';
 import { Login } from '../components/Login/Login.jsx';
 import { Register }  from './Register/Register.jsx';
+import { SuccessRegister } from './SuccessRegister/SuccessRegister.jsx';
 import { Main } from './pages/Main/Main.jsx';
 import { Savednews } from './pages/Savednews/Savednews.jsx';
 import { SavedNewsHeader } from './Header/Savednewsheader.jsx';
@@ -283,20 +284,22 @@ function App() {
                         {(location.pathname === '/signin' || location.pathname === '/signup') && (
                             <Popup 
                                 onClose={closeAllPopups} 
-                                title={popupType === 'login' ? "Iniciar sesión" : "Inscribirse"}
+                                title={ popupType === 'login' ? "Iniciar sesión" :
+                                        popupType === 'register' ? "Inscribirse" :
+                                        popupType === 'successRegister' ? "¡El registro se ha completado éxito!" : ""}
                             >
-                                {popupType === 'login' ? (
-                                    <Login 
-                                        handleLogin={handleLogin}
-                                        
-                                    />
-                                ) : (
-                                    <Register 
-                                    
-                                    handleRegister={handleRegister}
-                                        
-                                    />
+                                {popupType === 'login' && (
+                                    <Login handleLogin={handleLogin} />
                                 )}
+
+                                {popupType === 'register' && (
+                                    <Register  handleRegister={handleRegister} />
+                                )}
+
+                                {popupType === 'successRegister' && (
+                                    <SuccessRegister handleSuccessRegister={handleSuccessRegister} />
+                                )}
+                            
                             </Popup>
                         )}
                         
