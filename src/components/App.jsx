@@ -90,7 +90,7 @@ function App() {
         auth.register(email, password, name)
             .then((data) => {
                 closeAllPopups();
-                handleSuccessRegister();
+                openSuccessRegisterPopup();
             })
             .catch(error => {
                 console.error("Error en registro:", error);
