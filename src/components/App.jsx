@@ -73,6 +73,11 @@ function App() {
             });
     };
 
+    const handleSuccessRegister = () => {
+        navigate('/signin');
+        openSuccessRegisterPopup();
+    }
+
     const handleRegister = ({ email, password, name }) => {
         
         if (!email || !password || !name) {
@@ -82,8 +87,8 @@ function App() {
         
         auth.register(email, password, name)
             .then((data) => {
-                openSuccessRegisterPopup();
-                
+                closeAllPopups();
+                handleSuccessRegister();
             })
             .catch(error => {
                 console.error("Error en registro:", error);
@@ -99,10 +104,6 @@ function App() {
 
     };
 
-    const handleSuccessRegister = () => {
-
-    }
-    
     const createApiAcces = () => {
         const jwt = getToken();
         if (!jwt) return null;
@@ -170,10 +171,12 @@ function App() {
                 setCurrentUser,
                 handleLogin,
                 handleLogout,
+                handleSuccessRegister,
                 currentPath,
                 setCurrentPath,
                 openLoginPopup,
                 openRegisterPopup,
+                openSuccessRegisterPopup,
                 
 
                 }}>
