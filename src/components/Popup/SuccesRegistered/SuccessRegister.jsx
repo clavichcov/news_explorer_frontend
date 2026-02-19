@@ -1,6 +1,6 @@
-import ' ./SuccesRegistered.css';
+import ' ./SuccesRegister.css';
 
-export function SuccesPopup(props) {
+export function SuccesRegister(props) {
     const { title, link, onClose } = props;
   
     handleButtonClick = () => {
