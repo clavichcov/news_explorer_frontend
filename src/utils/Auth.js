@@ -26,9 +26,18 @@ export const register = (email, password, name) => {
         body: JSON.stringify({ email, password, name }),
 
     })
-        .then((res) => {
-            return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-        });
+    .then(async (res) => {
+      const data = await res.json().catch(() => ({}));
+      
+      if (!res.ok) {
+        // Si el servidor envió un mensaje, úsalo
+        const error = new Error(data.message || `Error: ${res.status}`);
+        error.status = res.status;
+        error.data = data;
+        throw error;
+      }
+      return data;
+    });
 };
 
 export const saveArticle = (urlToImage, title, description, source, publishedAt, keyword) => {

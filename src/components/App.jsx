@@ -81,20 +81,31 @@ function App() {
     }
 
     const handleRegister = async ({ email, password, name }) => {
-        
         if (!email || !password || !name) {
             alert('Por favor completa todos los campos');
             return;
         }
         
-        auth.register(email, password, name)
-            .then((data) => {
-                openSuccessRegisterPopup();
-            })
-            .catch(error => {
-                console.error("Error en registro:", error);
-                throw new Error(error.message || 'Error en el registro');
-            });
+        try {
+            const data = await auth.register(email, password, name);
+            openSuccessRegisterPopup();
+        } catch (error) {
+            console.error("Error en registro:", error);
+            
+            // Extraer el mensaje del error (puede venir en diferentes formatos)
+            let errorMessage = 'Error en el registro';
+            
+            if (error.message) {
+            errorMessage = error.message;
+            } else if (error.response?.data?.message) {
+            errorMessage = error.response.data.message;
+            } else if (error.status === 409) {
+            errorMessage = 'El correo electrónico ya está registrado';
+            }
+            
+            // Lanza el error con el mensaje adecuado
+            throw new Error(errorMessage);
+        }
     };
     
     const handleLogout = () => {
