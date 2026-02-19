@@ -1,9 +1,9 @@
 import './SuccessRegister.css';
 
-export function SuccesRegister(props) {
+export default function SuccessRegister(props) {
     const { title, link, onClose } = props;
   
-    handleButtonClick = () => {
+    const handleButtonClick = () => {
 
     }
   
