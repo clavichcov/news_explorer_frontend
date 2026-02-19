@@ -1,6 +1,6 @@
 import './SuccessRegister.css';
 
-export function SuccessRegister(title, onClose, handleSuccessRegister) {
+export function SuccessRegister({title, onClose, handleSuccessRegister}) {
     const handleButtonClick = () => {
               if (handleSuccessRegister) {
                   handleSuccessRegister();
