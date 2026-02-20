@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-dom";
+import { Api } from '../../utils/Api.js';
 import { Card } from '../Card/Card.jsx';
 import { Preloader } from '../Preloader/Preloader.jsx';
-import {IMAGES} from '../../utils/Constants.js';
+import { IMAGES, API_BASE_URL } from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
@@ -15,6 +16,17 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
+
+    const apiAcces = new Api({
+              baseUrl: API_BASE_URL,
+              
+              headers: {
+                Accept: "application/json",
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwt}`, 
+                    
+              }
+            });
 
     const findRelevantKeyword = (title, keywords) => {
         if (!title || !keywords || keywords.length === 0) return null;

@@ -9,6 +9,7 @@ import { Savednews } from './pages/Savednews/Savednews.jsx';
 import { SavedNewsHeader } from './Header/Savednewsheader.jsx';
 import { Footer } from './Footer/Footer.jsx';
 import { Popup } from './Popup/Popup.jsx';
+import { API_BASE_URL } from '../utils/Constants.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import Api from '../utils/Api.js';
 import * as auth from '../utils/Auth.js';
@@ -116,7 +117,7 @@ function App() {
         if (!jwt) return null;
 
         return new Api({
-        baseUrl: "https://se-register-api.en.tripleten-services.com/v1",
+        baseUrl: API_BASE_URL,
         headers: {
             Accept: "application/json",
             'Content-Type': 'application/json',
