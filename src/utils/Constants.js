@@ -25,6 +25,7 @@ export const IMAGES = {
   bookmark_disabled,
   bookmark_active,
   bookmark_saved,
+  bookmark_trash,
   logout_normal,
   logout_savednews,
   cardimg,
