@@ -34,7 +34,7 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
                         <h2 className="card__title">{data.title}</h2>
                         <p className="card__text">{data.description}
                         </p>
-                        <p className='card__source'>{data.source.name}</p>
+                        <p className='card__source'>{data.source?.name || 'Fuente desconocida'}</p>
                     </div>
                         <button className="card__button" 
                             onMouseEnter={() => setIsHovered(true)}
