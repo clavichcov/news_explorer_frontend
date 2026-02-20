@@ -9,6 +9,10 @@ export function LoginPopup({handleLogin}) {
     email: "",
     password: ""
   });
+  const [touched, setTouched] = useState({
+    email: false,
+    password: false
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -50,6 +54,23 @@ export function LoginPopup({handleLogin}) {
     const fieldName = name === "email-input" ? "email" : "password";
     const error = validateField(fieldName, value);
     setErrors(prev => ({ ...prev, [fieldName]: error }));
+    setTouched(prev => ({ ...prev, [fieldName]: true }));
+  };
+
+  const isFormValid = () => {
+    if (!touched.email || !touched.password) {
+      return false;
+    }
+    
+    if (errors.email || errors.password || serverError) {
+      return false;
+    }
+    
+    if (!email.trim() || !password.trim()) {
+      return false;
+    }
+    
+    return true;
   };
 
   const handleSubmit = (e) => {

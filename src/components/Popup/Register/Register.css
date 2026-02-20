@@ -83,7 +83,7 @@
 .form__login_submit-enabled {
     display: block;
     margin: 0;
-    padding: 0px;
+    padding-top: 39px;
     height: 64px;
     min-height: 50px;
     width: 358px;
@@ -100,7 +100,7 @@
 .form__login_submit-disabled {
     display: block;
     margin: 0;
-    padding: 0px;
+    padding-top: 39px;
     height: 64px;
     min-height: 50px;
     width: 358px;
