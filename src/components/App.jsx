@@ -13,7 +13,7 @@ import { API_BASE_URL } from '../utils/Constants.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import Api from '../utils/Api.js';
 import * as auth from '../utils/Auth.js';
-import { setToken, getToken, removeToken } from "../utils/Token";
+import { setToken, getToken, removeToken } from "../utils/Token.js";
 import CurrentUserContext from '../contexts/CurrentUserContext.jsx';
 import { SearchProvider } from '../contexts/SearchContext.jsx';
 import './App.css';

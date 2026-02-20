@@ -7,7 +7,7 @@ import { IMAGES, API_BASE_URL } from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
-
+import { getToken} from "../../utils/token";
 export function Articles({ isLoggedIn, onLogout, currentPath }) {
     
     const [ cards, setCards ] = useState([]);
@@ -16,7 +16,7 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
-
+    const jwt = getToken();
     const apiAcces = new Api({
               baseUrl: API_BASE_URL,
               
