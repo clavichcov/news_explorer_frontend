@@ -149,9 +149,9 @@ export function LoginPopup({handleLogin}) {
         </span>
       </label>
       <button 
-        className={`${errors.email || errors.password ? 'form__login_submit-disabled' : 'form__login_submit-enabled'}`}
+        className={isFormValid() ? 'form__login_submit-enabled' : 'form__login_submit-disabled'}
         type="submit"
-        disabled={!!(errors.email || errors.password)}
+        disabled={!isFormValid()}
       >
         Iniciar sesión
       </button>
