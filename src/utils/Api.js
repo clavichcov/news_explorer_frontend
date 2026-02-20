@@ -85,17 +85,6 @@ export class Api {
 
     }
 
-    likeCard(cardId) {
-        return this._makeRequest(`/cards/${cardId}/likes`, 'PUT');
-
-    }
-    dislikeCard(cardId) {
-        return this._makeRequest(`/cards/${cardId}/likes`, 'DELETE');
-
-    }
-
-    
-
 }
 
 export default Api;

@@ -91,10 +91,7 @@ function App() {
             openSuccessRegisterPopup();
         } catch (error) {
             console.error("Error en registro:", error);
-            
-            // Extraer el mensaje del error (puede venir en diferentes formatos)
             let errorMessage = 'Error en el registro';
-            
             if (error.message) {
             errorMessage = error.message;
             } else if (error.response?.data?.message) {
@@ -102,8 +99,6 @@ function App() {
             } else if (error.status === 409) {
             errorMessage = 'El correo electrónico ya está registrado';
             }
-            
-            // Lanza el error con el mensaje adecuado
             throw new Error(errorMessage);
         }
     };
@@ -292,7 +287,7 @@ function App() {
                                                 onLogout={handleLogout}
                                                 isName={currentUser?.username || ''}
                                             />
-                                            <Main apiAcces={createApiAcces} />
+                                            <Main apiAcces={createApiAccess} />
                                             <Footer 
                                                 isLoggedIn={isLoggedIn} 
                                                 onLogout={handleLogout}

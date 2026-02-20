@@ -30,7 +30,6 @@ export const register = (email, password, name) => {
       const data = await res.json().catch(() => ({}));
       
       if (!res.ok) {
-        // Si el servidor envió un mensaje, úsalo
         const error = new Error(data.message || `Error: ${res.status}`);
         error.status = res.status;
         error.data = data;
