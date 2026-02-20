@@ -6,14 +6,7 @@ import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
 export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded }) {
-    const [savedArticlesCount, setSavedArticlesCount] = useState(0);
     
-    useEffect(() => {
-        if (onArticlesCountChange) {
-            onArticlesCountChange(savedArticlesCount);
-        }
-    }, [savedArticlesCount, onArticlesCountChange]);
-
     return (
         <main className="savednews">
             
