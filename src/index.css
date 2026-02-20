@@ -14,7 +14,7 @@
     font-weight: 400;
 }
 
-/*a, 
+a, 
 button, 
 [role="button"], 
 input[type="submit"], 
@@ -23,7 +23,7 @@ input[type="button"],
 .clickable,
 [onclick] {
     cursor: url('./images/cursors/Pointer.png') 12 12, pointer !important;
-}*/
+}
 
 @media screen and (max-width: 768px) {
     .html, body{
