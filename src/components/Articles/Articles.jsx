@@ -88,9 +88,9 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
     function onSaveArticle (data) {
         console.log ('Guardar artículo con ID:', data);
         if (isLoggedIn) {
-            apiAcces.addCard(data)
-            .then(addedCard => {
-                setCards([addedCard, ...cards]);
+            apiAcces.addArticle(data)
+            .then(addedArticle => {
+                setCards([addedArticle, ...articles]);
                 handleClosePopup();
             })
             .catch(error => console.error('Error al añadir card:', error));
