@@ -6,7 +6,7 @@ import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
 export function Savednews() {
-    
+    const [savedArticlesCount, setSavedArticlesCount] = useState(0);
     
     return (
         <main className="savednews">
