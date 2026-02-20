@@ -33,8 +33,14 @@ export function SavedNewsHeader({ isLoggedIn, onLogout, isName, currentPath, sav
                
     };
 
-    handleLogoClick = () => {
+    const handleLogoClick = () => {
         navigate('/');
+        if (location.pathname === currentPath) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     }
 
     useEffect(() => {

@@ -32,6 +32,12 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
 
     const handleLogoClick = () => {
         navigate('/');
+        if (location.pathname === currentPath) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     }
 
     const handleArticlesButton = () => {
