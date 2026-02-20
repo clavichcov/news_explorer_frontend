@@ -11,6 +11,7 @@ import { getToken} from "../../utils/Token.js";
 export function Articles({ isLoggedIn, onLogout, currentPath }) {
     
     const [ cards, setCards ] = useState([]);
+    const articles = cards;
     const [visibleCards, setVisibleCards] = useState(3);
     const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -90,10 +91,9 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
         if (isLoggedIn) {
             apiAcces.addArticle(data)
             .then(addedArticle => {
-                setCards([addedArticle, ...articles]);
-                handleClosePopup();
+                setCards([addedArticle, ...cards]);
             })
-            .catch(error => console.error('Error al añadir card:', error));
+            .catch(error => console.error('Error al añadir el artículo:', error));
         } else {
             return alert('Inicia sesión para guardar artículos');
         }
