@@ -16,7 +16,7 @@ export function SavedNewsHeader({ isLoggedIn, onLogout, isName, currentPath, sav
 
     const keywords = Array.from(
         new Set(savedArticles.flatMap(article => 
-        article.keywords || []
+        article.keyword || []
         ))
     );
 

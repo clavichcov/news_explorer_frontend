@@ -8,7 +8,7 @@ import { Api } from '../../utils/Api.js';
 import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
-export function SavedNewsArticles() {
+export function SavedNewsArticles({ onArticlesLoaded }) {
     
     const [ cards, setCards ] = useState([]);
     const [visibleCards, setVisibleCards] = useState(3);
@@ -51,25 +51,26 @@ export function SavedNewsArticles() {
     };
 
     useEffect(() => {
-            const fetchSavedArticles = async () => {
-        setIsLoading(true);
-        try {
-            const jwt = getToken();
-            const api = new Api({
-                baseUrl: API_BASE_URL,
-                headers: { Authorization: `Bearer ${jwt}` }
-            });
-            
-            const savedArticles = await api.getSavedArticles(); 
-            console.log('savedArticles:', savedArticles);
-            setCards(savedArticles.data);
-            
-        } catch (error) {
-            console.error('Error:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+        const fetchSavedArticles = async () => {
+            setIsLoading(true);
+            try {
+                const jwt = getToken();
+                const api = new Api({
+                    baseUrl: API_BASE_URL,
+                    headers: { Authorization: `Bearer ${jwt}` }
+                });
+                
+                const savedArticles = await api.getSavedArticles(); 
+                setCards(savedArticles.data);
+                if (onArticlesLoaded) {
+                    onArticlesLoaded(savedArticles.data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
     if (getToken()) {
         fetchSavedArticles();

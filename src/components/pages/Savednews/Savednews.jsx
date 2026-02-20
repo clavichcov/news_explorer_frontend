@@ -11,7 +11,12 @@ export function Savednews() {
     return (
         <main className="savednews">
             
-            <SavedNewsArticles></SavedNewsArticles>
+            <SavedNewsArticles
+                onArticlesLoaded={(articles) => {
+                    setSavedArticlesCount(articles.length);
+                    console.log('Artículos cargados:', articles);
+                }}
+            ></SavedNewsArticles>
             
         </main>
     );
