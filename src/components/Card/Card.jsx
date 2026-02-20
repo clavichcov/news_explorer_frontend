@@ -39,7 +39,7 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
 
     useEffect(() => {
         if (tooltipRef.current) {
-            if (!isLoggedIn && isHovered) {
+            if (isHovered) {
                 tooltipRef.current.style.display = 'block';
             } else {
                 tooltipRef.current.style.display = 'none';
