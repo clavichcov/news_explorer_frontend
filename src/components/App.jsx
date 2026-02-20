@@ -27,7 +27,6 @@ function App() {
     const [popupType, setPopupType] = useState('login');
     const [currentUser, setCurrentUser] = useState(null);
     const [currentPath, setCurrentPath] = useState("/");
-    const [savedArticlesCount, setSavedArticlesCount] = useState(0);
     const [savedArticles, setSavedArticles] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
@@ -278,7 +277,7 @@ function App() {
                                                 isLoggedIn={isLoggedIn} 
                                                 onLogout={handleLogout} 
                                                 currentPath="/savednews"
-                                                onArticlesCountChange={setSavedArticlesCount}
+                                                onArticlesLoaded={setSavedArticles}
                                             />
                                             <Footer currentPath="/savednews"/>
                                         </>

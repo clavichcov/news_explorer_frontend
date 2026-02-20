@@ -5,7 +5,7 @@ import { SavedNewsArticles } from '../../Articles/Savednewsarticles.jsx';
 import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
-export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesCountChange }) {
+export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded }) {
     const [savedArticlesCount, setSavedArticlesCount] = useState(0);
     
     useEffect(() => {
@@ -19,8 +19,9 @@ export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesCountCh
             
             <SavedNewsArticles
                 onArticlesLoaded={(articles) => {
-                    setSavedArticlesCount(articles.length);
-                    console.log('Artículos cargados:', articles);
+                    if (onArticlesLoaded) {
+                        onArticlesLoaded(articles);
+                    }
                 }}
             ></SavedNewsArticles>
             
