@@ -87,17 +87,15 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
 
     const performNewsSearch = async (query, keywords) => {
         setIsLoading(true);
-        setCards([]); // Limpiar resultados anteriores
+        setCards([]); 
             
         try {
-            // Hacer búsquedas en paralelo para cada keyword
             const searchPromises = keywords.map(keyword => 
                 newsApi.searchNews(keyword)
             );
             
             const results = await Promise.all(searchPromises);
             
-            // Combinar todos los resultados
             let allArticles = [];
             results.forEach((data, index) => {
                 if (data.articles && data.articles.length > 0) {
@@ -115,10 +113,8 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                 }
             });
             
-            // MEZCLAR ALEATORIAMENTE (shuffle)
             const shuffledArticles = allArticles.sort(() => Math.random() - 0.5);
             
-            // Eliminar duplicados por título
             const uniqueArticles = [];
             const titles = new Set();
             

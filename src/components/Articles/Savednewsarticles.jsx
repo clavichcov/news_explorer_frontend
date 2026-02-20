@@ -8,7 +8,7 @@ import { Api } from '../../utils/Api.js';
 import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
-export function SavedNewsArticles({ onArticlesLoaded }) {
+export function SavedNewsArticles({ onArticlesLoaded, currentPath }) {
     
     const [ cards, setCards ] = useState([]);
     const [visibleCards, setVisibleCards] = useState(3);
@@ -30,10 +30,6 @@ export function SavedNewsArticles({ onArticlesLoaded }) {
         
         return keywords[0];
     };
-
-    useEffect(() => {
-        
-    },);
 
     const handleLoadMore = async () => {
         setLoadingMore(true);
@@ -90,7 +86,11 @@ export function SavedNewsArticles({ onArticlesLoaded }) {
                         <div className="articles__container">
                             <div className="articles__cards">
                                 {cards.slice(0, visibleCards).map(card => (
-                                    <Card key={card.id} data={card} />
+                                    <Card 
+                                        key={card.id} 
+                                        data={card} 
+                                        currentPath={currentPath} 
+                                    />
                                 ))}
                             </div>
                             {loadingMore && (

@@ -16,6 +16,7 @@ export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded 
                         onArticlesLoaded(articles);
                     }
                 }}
+                currentPath={currentPath}
             ></SavedNewsArticles>
             
         </main>
