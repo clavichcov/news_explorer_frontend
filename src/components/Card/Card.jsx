@@ -15,15 +15,13 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
     const getBookmarkIcon = () => {
         if (currentPath === "/savednews") {
             return IMAGES.bookmark_trash;
-            
         } 
-        if (!isLoggedIn && currentPath === "/savednews") {
+        
+        if (!isLoggedIn) {
             return IMAGES.bookmark_disabled;
         }
-        if (isLoggedIn && currentPath === "/savednews") {
-            return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
-            
-        }
+        
+        return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
     };
 
     useEffect(() => {
