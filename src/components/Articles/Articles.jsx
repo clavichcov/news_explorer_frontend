@@ -20,13 +20,11 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
     const jwt = getToken();
     const apiAcces = new Api({
               baseUrl: API_BASE_URL,
-              
               headers: {
-                Accept: "application/json",
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${jwt}`, 
-                    
-              }
+                    Accept: "application/json",
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${jwt}`, 
+                }
             });
 
     const findRelevantKeyword = (title, keywords) => {
