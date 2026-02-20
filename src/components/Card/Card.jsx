@@ -32,6 +32,9 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
         if (!isLoggedIn) {
             return "Inicia sesión para guardar artículos";
         }
+        if (isLoggedIn) {
+            return data.isSaved ? "Artículo guardado" : "Guardar artículo";
+        }
     }
 
     useEffect(() => {
