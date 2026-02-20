@@ -61,6 +61,7 @@ export function SavedNewsArticles() {
             });
             
             const savedArticles = await api.getSavedArticles(); 
+            console.log('savedArticles:', savedArticles);
             setCards(savedArticles);
             
         } catch (error) {
