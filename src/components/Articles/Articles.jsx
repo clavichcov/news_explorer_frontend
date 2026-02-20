@@ -12,10 +12,11 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
     
     const [ cards, setCards ] = useState([]);
     const articles = cards;
+    const [ isSavedArticle, setIsSavedArticle ] = useState(false);
     const [visibleCards, setVisibleCards] = useState(3);
     const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
+    const { searchQuery, searchKeywords, setError } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
     const jwt = getToken();
     const apiAcces = new Api({
@@ -89,15 +90,22 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
         if (isLoggedIn) {
             apiAcces.addArticle(data)
             .then(addedArticle => {
-                setCards([addedArticle, ...cards]);
+                //setCards([addedArticle, ...cards]);
+                    setCards(cards.map(card => 
+                        card.id === data.id ? { ...card, isSaved: true } : card
+                    ));
             })
             .catch(error => console.error('Error al añadir el artículo:', error));
         } else {
             return alert('Inicia sesión para guardar artículos');
         }
-        
-        
     }
+
+    const handleSaveArticle = (article) => {
+        if (isLoggedIn) {
+            
+        }
+    };
 
     const handleLoadMore = async () => {
         setLoadingMore(true);
@@ -113,12 +121,13 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
             
         setLoadingMore(false);
     };
-
+    
     useEffect(() => {
         if (searchQuery && searchKeywords && searchKeywords.length > 0) {
             performNewsSearch(searchQuery, searchKeywords);
         }
-    }, [searchQuery, searchKeywords]);
+    }, [searchQuery, searchKeywords]
+    );
 
     return (
         <>

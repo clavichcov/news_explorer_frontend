@@ -36,9 +36,10 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
                         </p>
                         <p className='card__source'>{data.source?.name || 'Fuente desconocida'}</p>
                     </div>
-                        <button className="card__button" 
+                        <button className={data.isSaved ? "card__button--active" : "card__button"} 
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
+                            
                             onClick={(e) => {
                                 e.stopPropagation();
                                 onSaveArticle(data);
