@@ -28,6 +28,7 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [currentPath, setCurrentPath] = useState("/");
     const [savedArticlesCount, setSavedArticlesCount] = useState(0);
+    const [savedArticles, setSavedArticles] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
     
