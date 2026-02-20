@@ -269,7 +269,7 @@ function App() {
                                             <SavedNewsHeader 
                                                 isLoggedIn={isLoggedIn} 
                                                 onLogout={handleLogout}
-                                                savedArticles={{ length: savedArticlesCount }}
+                                                savedArticles={savedArticles}
                                                 isName={currentUser?.username || ''}
                                                 currentPath="/savednews"
                                             />
