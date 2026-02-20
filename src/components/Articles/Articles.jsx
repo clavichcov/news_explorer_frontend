@@ -140,7 +140,7 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
                                         currentPath={currentPath}
-                                        onSaveArticle={onSaveArticle(card)}
+                                        onSaveArticle={() => onSaveArticle(card)}
                                     />
                                 ))}
                             </div>
