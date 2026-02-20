@@ -5,7 +5,7 @@ import { SavedNewsArticles } from '../../Articles/Savednewsarticles.jsx';
 import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
-export function Savednews() {
+export function Savednews({ isLoggedIn, onLogout, currentPath }) {
     const [savedArticlesCount, setSavedArticlesCount] = useState(0);
     
     return (
