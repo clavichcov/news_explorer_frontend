@@ -42,9 +42,9 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
         return keywords[0];
     };
 
-    const performNewsSearch = async (query, keywords) => {
+    /*const performNewsSearch = async (query, keywords) => {
         setIsLoading(true);
-                    
+        setCards([]);            
         try {
             const data = await newsApi.searchNews(query);
                 
@@ -74,6 +74,62 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                 return [...prev, ...uniqueArticles];
             });
             
+            setVisibleCards(3);
+                            
+        } catch (error) {
+            console.error('Error en la búsqueda:', error);
+            setError(error.message);
+            setCards([]);
+        } finally {
+            setIsLoading(false);
+        }
+    };*/
+
+    const performNewsSearch = async (query, keywords) => {
+        setIsLoading(true);
+        setCards([]); // Limpiar resultados anteriores
+            
+        try {
+            // Hacer búsquedas en paralelo para cada keyword
+            const searchPromises = keywords.map(keyword => 
+                newsApi.searchNews(keyword)
+            );
+            
+            const results = await Promise.all(searchPromises);
+            
+            // Combinar todos los resultados
+            let allArticles = [];
+            results.forEach((data, index) => {
+                if (data.articles && data.articles.length > 0) {
+                    const keyword = keywords[index];
+                    const formattedArticles = data.articles.map((article, i) => ({
+                        id: `${keyword}-${i}-${Date.now()}-${Math.random()}`,
+                        urlToImage: article.urlToImage,
+                        title: article.title,
+                        description: article.description,
+                        publishedAt: article.publishedAt,
+                        source: { name: article.source?.name },
+                        keyword: keyword
+                    }));
+                    allArticles = [...allArticles, ...formattedArticles];
+                }
+            });
+            
+            // MEZCLAR ALEATORIAMENTE (shuffle)
+            const shuffledArticles = allArticles.sort(() => Math.random() - 0.5);
+            
+            // Eliminar duplicados por título
+            const uniqueArticles = [];
+            const titles = new Set();
+            
+            shuffledArticles.forEach(article => {
+                if (!titles.has(article.title)) {
+                    titles.add(article.title);
+                    uniqueArticles.push(article);
+                }
+            });
+            
+            setCards(uniqueArticles);
             setVisibleCards(3);
                             
         } catch (error) {
