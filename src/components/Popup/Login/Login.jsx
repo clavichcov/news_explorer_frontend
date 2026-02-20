@@ -5,6 +5,7 @@ export function LoginPopup({handleLogin}) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState({
     email: "",
     password: ""
