@@ -116,7 +116,7 @@ function App() {
 
     };
 
-    const createApiAcces = () => {
+    const createApiAccess = () => {
         const jwt = getToken();
         if (!jwt) return null;
 
@@ -147,7 +147,7 @@ function App() {
     useEffect(() => {
         const jwt = getToken();
         if (jwt) {
-            const apiInstance = createApiAcces();
+            const apiInstance = createApiAccess();
             if (apiInstance) {
                 apiInstance.getUserInfo()
                     .then((userData) => {
@@ -157,7 +157,14 @@ function App() {
                         });
                         setIsLoggedIn(true);
                     })
-                    .catch(console.error);
+                                    .catch((error) => {
+                    console.error('Error al verificar token:', error);
+                    if (error.status === 401) {
+                        removeToken();
+                        setIsLoggedIn(false);
+                        setCurrentUser(null);
+                    }
+                });
             }
         }
     }, []);
