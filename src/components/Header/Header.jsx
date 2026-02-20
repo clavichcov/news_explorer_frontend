@@ -30,6 +30,10 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
                
     };
 
+    const handleLogoClick = () => {
+        navigate('/');
+    }
+
     const handleArticlesButton = () => {
         if (isLoggedIn) {
             navigate('/savednews');
@@ -89,7 +93,7 @@ export function Header({isLoggedIn, onLogout, isName, currentPath}) {
         <header className="header">
             <div className={`header__bar ${isScrolled ? 'header__bar--scrolled' : ''}`}>
                 <div className= "header__bar--containt">
-                    <p className="header__bar--title" >News Explorer</p>
+                    <a className="header__bar--title" onClick={handleLogoClick}>News Explorer</a>
                     <div className="header__bar--container">
                         <div className="header__user--unlogged">
                             <button className="header__button header__button--home" onClick={handleHomeClick}>Inicio</button>

@@ -32,6 +32,11 @@ export function SavedNewsHeader({ isLoggedIn, onLogout, isName, currentPath, sav
         }
                
     };
+
+    handleLogoClick = () => {
+        navigate('/');
+    }
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
@@ -52,7 +57,7 @@ export function SavedNewsHeader({ isLoggedIn, onLogout, isName, currentPath, sav
         <header className="savedheader">
             <div className={`savedheader__bar ${isScrolled ? 'savedheader__bar--scrolled' : ''}`}>
                 <div className= "savedheader__bar--containt">
-                    <p className="savedheader__bar--title">News Explorer</p>
+                    <a className="savedheader__bar--title" onClick={handleLogoClick}>News Explorer</a>
                     <div className="savedheader__bar--container">
                         <div className="savedheader__user--unlogged">
                             <button className="savedheader__button savedheader__button--home" onClick={handleHomeClick}>Inicio</button>
