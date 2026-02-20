@@ -82,8 +82,8 @@
 
 .form__login_submit-enabled {
     display: block;
-    margin: 0;
-    padding-top: 39px;
+    margin-top: 39px;
+    padding: 0;
     height: 64px;
     min-height: 50px;
     width: 358px;
@@ -99,8 +99,8 @@
 
 .form__login_submit-disabled {
     display: block;
-    margin: 0;
-    padding-top: 39px;
+    margin-top: 39px;
+    padding: 0;
     height: 64px;
     min-height: 50px;
     width: 358px;
