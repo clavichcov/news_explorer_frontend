@@ -12,6 +12,11 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
         return date.toLocaleDateString(undefined, options);
     }
 
+    const getBookmarkIcon = () => {
+        if (!isLoggedIn) return IMAGES.bookmark_disabled;
+        return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
+    };
+
     useEffect(() => {
         if (tooltipRef.current) {
             if (!isLoggedIn && isHovered) {
@@ -45,8 +50,7 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
                                 onSaveArticle(data);
                             }}
                             >
-                            <img src={
-                                isLoggedIn ? IMAGES.bookmark_active : IMAGES.bookmark_disabled}
+                            <img src={getBookmarkIcon()}
                                  alt="Icono de marcador" 
                             />
                         </button>

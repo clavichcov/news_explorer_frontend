@@ -137,6 +137,10 @@
     
 }
 
+.card__button--active {
+    
+}
+
 @media screen and (max-width:768px){
     .card {
         max-width: 224px;
