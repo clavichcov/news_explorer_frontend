@@ -5,9 +5,15 @@ import { SavedNewsArticles } from '../../Articles/Savednewsarticles.jsx';
 import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
-export function Savednews({ isLoggedIn, onLogout, currentPath }) {
+export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesCountChange }) {
     const [savedArticlesCount, setSavedArticlesCount] = useState(0);
     
+    useEffect(() => {
+        if (onArticlesCountChange) {
+            onArticlesCountChange(savedArticlesCount);
+        }
+    }, [savedArticlesCount, onArticlesCountChange]);
+
     return (
         <main className="savednews">
             
