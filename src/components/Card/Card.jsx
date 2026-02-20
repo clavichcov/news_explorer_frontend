@@ -24,6 +24,16 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
         return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
     };
 
+    const getTooltipText = () => {
+        if (currentPath === "/savednews") {
+            return "Eliminar artículo guardado";
+        
+        }
+        if (!isLoggedIn) {
+            return "Inicia sesión para guardar artículos";
+        }
+    }
+
     useEffect(() => {
         if (tooltipRef.current) {
             if (!isLoggedIn && isHovered) {
@@ -61,7 +71,9 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
                                  alt="Icono de marcador" 
                             />
                         </button>
-                        <p className="card__tooltip" ref={tooltipRef}>Inicia sesión para guardar artículos</p>
+                        <p className="card__tooltip" ref={tooltipRef}>
+                            {getTooltipText()}
+                            </p>
                         <p className="card__keyword" 
                             style={{ display: isLoggedIn && currentPath === "/savednews" ? "block" : "none" }}>
                             {data.keyword}
