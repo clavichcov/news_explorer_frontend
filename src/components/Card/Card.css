@@ -11,6 +11,7 @@
     overflow: hidden;
     border-radius: 5%;
     background-color: #d1d1d1;
+    cursor: inherit;
 }
 
 .card__image {

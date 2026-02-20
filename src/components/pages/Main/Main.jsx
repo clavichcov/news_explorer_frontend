@@ -6,7 +6,14 @@ export function Main({isLoggedIn, onLogout, currentPath}) {
     
     return (
         <main className="main">
-            <Articles isLoggedIn={isLoggedIn} onLogout={onLogout} currentPath={currentPath}></Articles>
+            <Articles 
+                isLoggedIn={isLoggedIn} 
+                onLogout={onLogout} 
+                currentPath={currentPath} 
+                
+            >
+
+            </Articles>
             <About></About>
 
         </main>

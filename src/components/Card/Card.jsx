@@ -2,16 +2,9 @@ import React, {useState, useRef, useEffect} from 'react';
 import {IMAGES} from '../../utils/Constants.js';
 import './Card.css'
 
-export function Card({data, isLoggedIn, onLogout, currentPath}) {
+export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
     const [isHovered, setIsHovered] = useState(false);
     const tooltipRef = useRef(null);
-    
-    const onSaveArticle = (data) => () => {
-        console.log ('Guardar artículo con ID:', data);
-        if (!isLoggedIn) {
-            
-        }
-    }
     
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -46,7 +39,10 @@ export function Card({data, isLoggedIn, onLogout, currentPath}) {
                         <button className="card__button" 
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
-                            onClick={onSaveArticle(data)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onSaveArticle(data);
+                            }}
                             >
                             <img src={
                                 isLoggedIn ? IMAGES.bookmark_active : IMAGES.bookmark_disabled}

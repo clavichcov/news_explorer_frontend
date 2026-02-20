@@ -73,11 +73,21 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
         }
     };
 
-    useEffect(() => {
-        if (searchQuery && searchKeywords && searchKeywords.length > 0) {
-            performNewsSearch(searchQuery, searchKeywords);
+    function onSaveArticle (data) {
+        console.log ('Guardar artículo con ID:', data);
+        if (isLoggedIn) {
+            apiAcces.addCard(data)
+            .then(addedCard => {
+                setCards([addedCard, ...cards]);
+                handleClosePopup();
+            })
+            .catch(error => console.error('Error al añadir card:', error));
+        } else {
+            return alert('Inicia sesión para guardar artículos');
         }
-    }, [searchQuery, searchKeywords]);
+        
+        
+    }
 
     const handleLoadMore = async () => {
         setLoadingMore(true);
@@ -93,6 +103,12 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
             
         setLoadingMore(false);
     };
+
+    useEffect(() => {
+        if (searchQuery && searchKeywords && searchKeywords.length > 0) {
+            performNewsSearch(searchQuery, searchKeywords);
+        }
+    }, [searchQuery, searchKeywords]);
 
     return (
         <>
@@ -113,7 +129,8 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                                     <Card key={card.id} data={card} 
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
-                                        currentPath={currentPath} 
+                                        currentPath={currentPath}
+                                        onSaveArticle={onSaveArticle(card)}
                                     />
                                 ))}
                             </div>
