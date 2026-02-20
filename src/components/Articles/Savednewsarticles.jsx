@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-dom";
 import { Card } from '../Card/Card.jsx';
 import { Preloader } from '../Preloader/Preloader.jsx';
-import {IMAGES} from '../../utils/Constants.js';
+import {IMAGES, API_BASE_URL} from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
-import { newsApi } from '../../utils/Thirdpartyapi.js';
+import { Api } from '../../utils/Api.js';
+import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
 export function SavedNewsArticles() {
@@ -48,6 +49,31 @@ export function SavedNewsArticles() {
             
         setLoadingMore(false);
     };
+
+    useEffect(() => {
+            const fetchSavedArticles = async () => {
+        setIsLoading(true);
+        try {
+            const jwt = getToken();
+            const api = new Api({
+                baseUrl: API_BASE_URL,
+                headers: { Authorization: `Bearer ${jwt}` }
+            });
+            
+            const savedArticles = await api.getSavedArticles(); 
+            setCards(savedArticles);
+            
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    if (getToken()) {
+        fetchSavedArticles();
+    }
+    }, []);
 
     return (
         <>

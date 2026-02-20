@@ -60,31 +60,9 @@ export class Api {
         return this._makeRequest('/users/me', 'GET');
     }
 
-    updateUserInfo(name, about) {
-        return this._makeRequest('/users/me', 'PATCH', { name, about });
-
+    getSavedArticles() {
+        return this._makeRequest('/articles', 'GET');
     }
-
-    updateUserAvatar(avatar) {
-        return this._makeRequest('/users/me/avatar', 'PATCH', { avatar });
-
-    }
-
-    getInitialCards() {
-        return this._makeRequest('/cards', 'GET');
-
-    }
-
-    addCard(name, link) {
-        return this._makeRequest('/cards', 'POST', { name, link });
-
-    }
-
-    deleteCard(cardId) {
-        return this._makeRequest(`/cards/${cardId}`, 'DELETE');
-
-    }
-
 }
 
 export default Api;
