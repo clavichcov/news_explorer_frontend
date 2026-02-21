@@ -153,9 +153,24 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
         }
     }
 
-    const handleSaveArticle = (article) => {
+    function onDeleteArticle (data) {
+        console.log ('Eliminar artículo con ID:', data);
         if (isLoggedIn) {
-            
+            apiAcces.deleteArticle(data.id)
+            .then(() => {
+                setCards(cards.filter(card => card.id !== data.id));    
+            })
+            .catch(error => console.error('Error al eliminar el artículo:', error));
+        }
+    }
+
+    const handleBookmarkClick = (data) => {
+        if (currentPath === "/"){
+            if (data.isSaved) {
+                onDeleteArticle(data);
+            } else {
+                onSaveArticle(data);
+            }  
         }
     };
 
@@ -201,7 +216,8 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
                                         currentPath={currentPath}
-                                        onSaveArticle={() => onSaveArticle(card)}
+                                        handleBookmarkClick={() => handleBookmarkClick(card)}
+                                        
                                     />
                                 ))}
                             </div>

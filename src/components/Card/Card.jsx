@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import {IMAGES} from '../../utils/Constants.js';
 import './Card.css'
 
-export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
+export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkClick}) {
     const [isHovered, setIsHovered] = useState(false);
     const tooltipRef = useRef(null);
     
@@ -65,9 +65,8 @@ export function Card({data, isLoggedIn, onLogout, currentPath, onSaveArticle}) {
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                             
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                onSaveArticle(data);
+                            onClick={() => {
+                                handleBookmarkClick(data);
                             }}
                             >
                             <img src={getBookmarkIcon()}
