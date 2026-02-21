@@ -5,7 +5,7 @@ import { SavedNewsArticles } from '../../Articles/Savednewsarticles.jsx';
 import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
-export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded, handleBookmarkClick }) {
+export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded, handleBookmarkClick, handleLoadMore }) {
     
     return (
         <main className="savednews">
@@ -16,6 +16,7 @@ export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded,
                         onArticlesLoaded(articles);
                     }
                 }}
+                handleLoadMore={handleLoadMore}
                 handleBookmarkClick={handleBookmarkClick}
                 currentPath={currentPath}
             ></SavedNewsArticles>

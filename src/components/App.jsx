@@ -167,19 +167,13 @@ function App() {
             }
         };
     
-        const handleLoadMore = async () => {
+        const handleLoadMore = () => {
             setLoadingMore(true);
-            await new Promise(resolve => {
-                setTimeout(() => {
-                    resolve();
-                }, 1000);
-            });
-            setVisibleCards(prev => {
-                const newValue = prev + 3;
-                return newValue;
-            });
-                
-            setLoadingMore(false);
+            
+            setTimeout(() => {
+                setVisibleCards(prev => prev + 3);
+                setLoadingMore(false);
+            }, 1000);
         };
 
     useEffect(() => {
@@ -271,6 +265,7 @@ function App() {
                                             isLoggedIn={isLoggedIn} 
                                             onLogout={handleLogout} 
                                             currentPath="/" 
+                                            handleLoadMore={handleLoadMore}
                                             handleBookmarkClick={handleBookmarkClick} />
                                         <Footer currentPath="/"/>
                                     </>
@@ -335,6 +330,7 @@ function App() {
                                             <Savednews 
                                                 isLoggedIn={isLoggedIn} 
                                                 onLogout={handleLogout}
+                                                handleLoadMore={handleLoadMore}
                                                 handleBookmarkClick={handleBookmarkClick}
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}

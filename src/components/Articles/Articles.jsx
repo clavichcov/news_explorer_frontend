@@ -8,7 +8,7 @@ import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
 import { getToken} from "../../utils/Token.js";
-export function Articles({ isLoggedIn, onLogout, currentPath, handleBookmarkClick }) {
+export function Articles({ isLoggedIn, onLogout, currentPath, handleBookmarkClick, handleLoadMore }) {
     
     const [ cards, setCards ] = useState([]);
     const articles = cards;

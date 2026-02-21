@@ -8,7 +8,7 @@ import { Api } from '../../utils/Api.js';
 import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
-export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmarkClick }) {
+export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmarkClick, handleLoadMore }) {
     
     const [ cards, setCards ] = useState([]);
     const [visibleCards, setVisibleCards] = useState(3);
