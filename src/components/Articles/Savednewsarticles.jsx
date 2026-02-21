@@ -17,21 +17,7 @@ export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmar
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
 
-    const handleLoadMore = async () => {
-        setLoadingMore(true);
-        await new Promise(resolve => {
-            setTimeout(() => {
-                resolve();
-            }, 1000);
-        });
-        setVisibleCards(prev => {
-            const newValue = prev + 3;
-            return newValue;
-        });
-            
-        setLoadingMore(false);
-    };
-
+    
     useEffect(() => {
         const fetchSavedArticles = async () => {
             setIsLoading(true);
