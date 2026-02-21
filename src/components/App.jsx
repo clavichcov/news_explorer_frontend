@@ -165,9 +165,8 @@ function App() {
                 apiAcces.deleteArticle(data._id)
                 .then(() => {
                     setCards(cards.filter(card => card._id !== data._id));
-                    if (savedArticles) {
-                        setSavedArticles(prev => prev.filter(article => article._id !== data._id));
-                    } 
+                    setSavedArticles(prev => prev.filter(article => article._id !== data._id));
+                     
                 })
                 .catch(error => console.error('Error al eliminar el artículo:', error));
             }
