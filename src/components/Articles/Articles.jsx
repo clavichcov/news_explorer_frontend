@@ -5,7 +5,7 @@ import { IMAGES, API_BASE_URL } from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
-import { getToken} from "../../utils/Token.js";
+
 export function Articles({ 
     isLoggedIn, onLogout, currentPath, 
     handleBookmarkClick, handleLoadMore, visibleCardsHome, loadingMore,

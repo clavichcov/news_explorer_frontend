@@ -33,7 +33,7 @@ function App() {
     const [visibleCardsSaved, setVisibleCardsSaved] = useState(3);
     const navigate = useNavigate();
     const location = useLocation();
-    
+    const jwt = getToken();
     const apiAcces = new Api({
               baseUrl: API_BASE_URL,
               headers: {
