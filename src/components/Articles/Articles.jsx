@@ -10,8 +10,8 @@ import './Articles.css'
 import { getToken} from "../../utils/Token.js";
 export function Articles({ 
     isLoggedIn, onLogout, currentPath, 
-    handleBookmarkClick, handleLoadMore, visibleCards, 
-    loadingMore, setVisibleCards, setLoadingMore 
+    handleBookmarkClick, handleLoadMore, visibleCardsHome, loadingMore,
+    setVisibleCardsHome, setLoadingMore 
 }) {
     
     const [ cards, setCards ] = useState([]);
@@ -130,7 +130,7 @@ export function Articles({
             });
             
             setCards(uniqueArticles);
-            setVisibleCards(3);
+            setVisibleCardsHome(3);
                             
         } catch (error) {
             console.error('Error en la búsqueda:', error);
@@ -165,7 +165,7 @@ export function Articles({
                     {!isLoading && cards.length > 0 ? (
                         <div className="articles__container">
                             <div className="articles__cards">
-                                {cards.slice(0, visibleCards).map(card => (
+                                {cards.slice(0, visibleCardsHome).map(card => (
                                     <Card key={card.id} data={card} 
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
@@ -180,7 +180,7 @@ export function Articles({
                                     <Preloader text="Cargando más artículos..." />
                                 </div>
                             )}
-                            {visibleCards < cards.length && (
+                            {visibleCardsHome < cards.length && (
                                 <button className="articles__button" onClick={handleLoadMore}>
                                     Ver más
                                 </button>

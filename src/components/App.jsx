@@ -275,8 +275,8 @@ function App() {
                                             currentPath="/" 
                                             handleLoadMore={handleLoadMore}
                                             handleBookmarkClick={handleBookmarkClick}
-                                            visibleCards={visibleCardsHome}
-                                            setVisibleCards={setVisibleCardsHome}
+                                            visibleCardsHome={visibleCardsHome}
+                                            setVisibleCardsHome={setVisibleCardsHome}
                                             loadingMore={loadingMore}
                                             setLoadingMore={setLoadingMore}
                                         />
@@ -347,8 +347,8 @@ function App() {
                                                 handleBookmarkClick={handleBookmarkClick}
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}
-                                                visibleCards={visibleCardsSaved}
-                                                setVisibleCards={setVisibleCardsSaved}
+                                                visibleCardsSaved={visibleCardsSaved}
+                                                setVisibleCardsSaved={setVisibleCardsSaved}
                                                 loadingMore={loadingMore}
                                                 setLoadingMore={setLoadingMore}
                                             />

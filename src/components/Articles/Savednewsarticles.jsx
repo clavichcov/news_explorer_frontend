@@ -10,8 +10,8 @@ import './Savednewsarticles.css'
 
 export function SavedNewsArticles({ 
     onArticlesLoaded, currentPath, handleBookmarkClick, 
-    handleLoadMore, visibleCards, loadingMore,
-    setVisibleCards, setLoadingMore
+    handleLoadMore, visibleCardsSaved, loadingMore,
+    setVisibleCardsSaved, setLoadingMore
 }) {
     
     const [ cards, setCards ] = useState([]);
@@ -61,7 +61,7 @@ export function SavedNewsArticles({
                     {!isLoading && cards.length > 0 ? (
                         <div className="articles__container">
                             <div className="articles__cards">
-                                {cards.slice(0, visibleCards).map(card => (
+                                {cards.slice(0, visibleCardsSaved).map(card => (
                                     <Card 
                                         key={card.id} 
                                         data={card}
@@ -75,7 +75,7 @@ export function SavedNewsArticles({
                                     <Preloader text="Cargando más artículos..." />
                                 </div>
                             )}
-                            {visibleCards < cards.length && (
+                            {visibleCardsSaved < cards.length && (
                                 <button className="articles__button" onClick={handleLoadMore}>
                                     Ver más
                                 </button>
