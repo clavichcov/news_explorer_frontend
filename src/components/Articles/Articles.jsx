@@ -158,7 +158,7 @@ export function Articles({
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
                                         currentPath={currentPath}
-                                        handleBookmarkClick={() => handleBookmarkClick()}
+                                        handleBookmarkClick={() => handleBookmarkClick(card, currentPath)}
                                         
                                     />
                                 ))}
@@ -169,7 +169,7 @@ export function Articles({
                                 </div>
                             )}
                             {visibleCardsHome < cards.length && (
-                                <button className="articles__button" onClick={handleLoadMore}>
+                                <button className="articles__button" onClick={() => handleLoadMore(currentPath)}>
                                     Ver más
                                 </button>
                             )}

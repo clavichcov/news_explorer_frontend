@@ -8,6 +8,7 @@ import { Main } from './pages/Main/Main.jsx';
 import { Savednews } from './pages/Savednews/Savednews.jsx';
 import { SavedNewsHeader } from './Header/Savednewsheader.jsx';
 import { Footer } from './Footer/Footer.jsx';
+import { Card } from './Card/Card.jsx';
 import { Popup } from './Popup/Popup.jsx';
 import { API_BASE_URL } from '../utils/Constants.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
@@ -27,6 +28,7 @@ function App() {
     const [popupType, setPopupType] = useState('login');
     const [currentUser, setCurrentUser] = useState(null);
     const [currentPath, setCurrentPath] = useState("/");
+    const [ cards, setCards ] = useState([]);
     const [savedArticles, setSavedArticles] = useState([]);
     const [loadingMore, setLoadingMore] = useState(false);
     const [visibleCardsHome, setVisibleCardsHome] = useState(3);
@@ -144,13 +146,12 @@ function App() {
             if (isLoggedIn) {
                 apiAcces.addArticle(data)
                 .then(addedArticle => {
-                    //setCards([addedArticle, ...cards]);
-                        setCards(cards.map(card => 
-                            card.id === data.id ? { 
-                                ...card, 
-                                _id: addedArticle._id,
-                                isSaved: true } : card
-                        ));
+                    setCards(cards.map(card => 
+                        card.id === data.id ? { 
+                            ...card, 
+                            _id: addedArticle._id,
+                            isSaved: true } : card
+                    ));
                 })
                 .catch(error => console.error('Error al añadir el artículo:', error));
             } else {
@@ -169,8 +170,8 @@ function App() {
             }
         }
     
-        function handleBookmarkClick (data) {
-            if (currentPath === "/"){
+        function handleBookmarkClick (data, currentPathOnClick) {
+            if (currentPathOnClick === "/"){
                 if (data.isSaved) {
                     onDeleteArticle(data);
                 } else {
@@ -179,13 +180,13 @@ function App() {
             }
         };
     
-        const handleLoadMore = () => {
+        const handleLoadMore = (currentPathOnClick) => {
             setLoadingMore(true);
             setTimeout(() => {
-                if (currentPath === "/") {
+                if (currentPathOnClick === "/") {
                     setVisibleCardsHome(prev => prev + 3);
                 }
-                    else if (currentPath === "/savednews") {
+                    else if (currentPathOnClick === "/savednews") {
                         setVisibleCardsSaved(prev => prev + 3);
                     }
                 setLoadingMore(false);

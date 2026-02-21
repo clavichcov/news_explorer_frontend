@@ -63,7 +63,7 @@ export function SavedNewsArticles({
                                     <Card 
                                         key={card.id} 
                                         data={card}
-                                        handleBookmarkClick={handleBookmarkClick}
+                                        handleBookmarkClick={() => handleBookmarkClick(card, currentPath)}
                                         currentPath={currentPath} 
                                     />
                                 ))}
@@ -74,7 +74,7 @@ export function SavedNewsArticles({
                                 </div>
                             )}
                             {visibleCardsSaved < cards.length && (
-                                <button className="articles__button" onClick={handleLoadMore}>
+                                <button className="articles__button" onClick={() => handleLoadMore(currentPath)}>
                                     Ver más
                                 </button>
                             )}
