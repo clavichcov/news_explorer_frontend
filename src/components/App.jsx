@@ -178,6 +178,9 @@ function App() {
                     onSaveArticle(data);
                 }  
             }
+            if (currentPathOnClick === "/savednews") {
+                onDeleteArticle(data);
+            }
         };
     
         const handleLoadMore = (currentPathOnClick) => {
@@ -192,6 +195,18 @@ function App() {
                 setLoadingMore(false);
             }, 1000);
             
+        };
+
+        const handleBookmarkIcon = () => {
+            if (currentPath === "/savednews") {
+                return IMAGES.bookmark_trash;
+            } 
+            
+            if (!isLoggedIn) {
+                return IMAGES.bookmark_disabled;
+            }
+            
+            return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
         };
 
     useEffect(() => {
@@ -285,6 +300,7 @@ function App() {
                                             currentPath="/" 
                                             handleLoadMore={handleLoadMore}
                                             handleBookmarkClick={handleBookmarkClick}
+                                            handleBookmarkIcon={handleBookmarkIcon}
                                             visibleCardsHome={visibleCardsHome}
                                             setVisibleCardsHome={setVisibleCardsHome}
                                             loadingMore={loadingMore}
@@ -355,6 +371,7 @@ function App() {
                                                 onLogout={handleLogout}
                                                 handleLoadMore={handleLoadMore}
                                                 handleBookmarkClick={handleBookmarkClick}
+                                                handleBookmarkIcon={handleBookmarkIcon}
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}
                                                 visibleCardsSaved={visibleCardsSaved}

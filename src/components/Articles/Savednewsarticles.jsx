@@ -9,7 +9,7 @@ import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
 export function SavedNewsArticles({ 
-    onArticlesLoaded, currentPath, handleBookmarkClick, 
+    onArticlesLoaded, currentPath, handleBookmarkClick, handleBookmarkIcon,
     handleLoadMore, visibleCardsSaved, loadingMore,
     setVisibleCardsSaved, setLoadingMore
 }) {
@@ -64,6 +64,7 @@ export function SavedNewsArticles({
                                         key={card.id} 
                                         data={card}
                                         handleBookmarkClick={() => handleBookmarkClick(card, currentPath)}
+                                        handleBookmarkIcon={() => handleBookmarkIcon(card, currentPath)}
                                         currentPath={currentPath} 
                                     />
                                 ))}

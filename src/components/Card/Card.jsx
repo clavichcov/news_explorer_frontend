@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import {IMAGES} from '../../utils/Constants.js';
 import './Card.css'
 
-export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkClick}) {
+export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkClick, handleBookmarkIcon}) {
     const [isHovered, setIsHovered] = useState(false);
     const tooltipRef = useRef(null);
     
@@ -11,18 +11,6 @@ export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkCli
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
     }
-
-    const getBookmarkIcon = () => {
-        if (currentPath === "/savednews") {
-            return IMAGES.bookmark_trash;
-        } 
-        
-        if (!isLoggedIn) {
-            return IMAGES.bookmark_disabled;
-        }
-        
-        return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
-    };
 
     const getTooltipText = () => {
         if (currentPath === "/savednews") {
@@ -69,7 +57,7 @@ export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkCli
                                 handleBookmarkClick(data);
                             }}
                             >
-                            <img src={getBookmarkIcon()}
+                            <img src={handleBookmarkIcon()}
                                  alt="Icono de marcador" 
                             />
                         </button>

@@ -4,7 +4,7 @@ import './Main.css'
 
 export function Main({
     isLoggedIn, onLogout, currentPath, 
-    handleBookmarkClick, handleLoadMore, 
+    handleBookmarkClick, handleBookmarkIcon, handleLoadMore, 
     visibleCardsHome, loadingMore, 
     setVisibleCardsHome, setLoadingMore
 }) {
@@ -17,6 +17,7 @@ export function Main({
                 currentPath={currentPath} 
                 handleLoadMore={handleLoadMore}
                 handleBookmarkClick={handleBookmarkClick}
+                handleBookmarkIcon={handleBookmarkIcon}
                 visibleCardsHome={visibleCardsHome}
                 setVisibleCardsHome={setVisibleCardsHome}
                 loadingMore={loadingMore}

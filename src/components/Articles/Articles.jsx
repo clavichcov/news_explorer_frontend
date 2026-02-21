@@ -8,8 +8,8 @@ import './Articles.css'
 
 export function Articles({ 
     isLoggedIn, onLogout, currentPath, 
-    handleBookmarkClick, handleLoadMore, visibleCardsHome, loadingMore,
-    setVisibleCardsHome, setLoadingMore 
+    handleBookmarkClick, handleBookmarkIcon, handleLoadMore, 
+    visibleCardsHome, loadingMore, setVisibleCardsHome, setLoadingMore 
 }) {
     
     const [ cards, setCards ] = useState([]);
@@ -159,7 +159,7 @@ export function Articles({
                                         onLogout={onLogout} 
                                         currentPath={currentPath}
                                         handleBookmarkClick={() => handleBookmarkClick(card, currentPath)}
-                                        
+                                        handleBookmarkIcon={() => handleBookmarkIcon(card, currentPath)}
                                     />
                                 ))}
                             </div>
