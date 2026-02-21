@@ -28,6 +28,13 @@ export class Api {
         }).then(this._checkResponse);
     }
 
+    deleteArticle(articleId) {
+        return fetch(`${this._baseUrl}/articles/${articleId}`, {
+            method: 'DELETE',
+            headers: this._headers,
+        }).then(this._checkResponse);
+    }   
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
