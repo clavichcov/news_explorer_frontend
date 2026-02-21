@@ -17,7 +17,7 @@ export function Articles({
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, setError } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
-    const jwt = getToken();
+    
     
 
     const findRelevantKeyword = (title, keywords) => {
