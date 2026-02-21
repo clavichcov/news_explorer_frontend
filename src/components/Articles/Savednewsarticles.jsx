@@ -11,7 +11,7 @@ import './Savednewsarticles.css'
 export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmarkClick, handleLoadMore }) {
     
     const [ cards, setCards ] = useState([]);
-    const [visibleCards, setVisibleCards] = useState(3);
+    //const [visibleCards, setVisibleCards] = useState(3);
     //const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();

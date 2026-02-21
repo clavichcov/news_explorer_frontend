@@ -29,6 +29,7 @@ function App() {
     const [currentPath, setCurrentPath] = useState("/");
     const [savedArticles, setSavedArticles] = useState([]);
     const [loadingMore, setLoadingMore] = useState(false);
+    const [visibleCards, setVisibleCards] = useState(3);
     const navigate = useNavigate();
     const location = useLocation();
     
