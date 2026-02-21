@@ -8,7 +8,7 @@ import { Api } from '../../utils/Api.js';
 import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
-export function SavedNewsArticles({ onArticlesLoaded, currentPath }) {
+export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmarkClick }) {
     
     const [ cards, setCards ] = useState([]);
     const [visibleCards, setVisibleCards] = useState(3);
@@ -16,20 +16,6 @@ export function SavedNewsArticles({ onArticlesLoaded, currentPath }) {
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
-
-
-    const findRelevantKeyword = (title, keywords) => {
-        if (!title || !keywords || keywords.length === 0) return null;
-        const titleLower = title.toLowerCase();
-        
-        for (const keyword of keywords) {
-            if (titleLower.includes(keyword.toLowerCase())) {
-                return keyword;
-            }
-        }
-        
-        return keywords[0];
-    };
 
     const handleLoadMore = async () => {
         setLoadingMore(true);
@@ -88,7 +74,8 @@ export function SavedNewsArticles({ onArticlesLoaded, currentPath }) {
                                 {cards.slice(0, visibleCards).map(card => (
                                     <Card 
                                         key={card.id} 
-                                        data={card} 
+                                        data={card}
+                                        handleBookmarkClick={handleBookmarkClick}
                                         currentPath={currentPath} 
                                     />
                                 ))}

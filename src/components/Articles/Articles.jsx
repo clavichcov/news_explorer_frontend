@@ -8,7 +8,7 @@ import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
 import { getToken} from "../../utils/Token.js";
-export function Articles({ isLoggedIn, onLogout, currentPath }) {
+export function Articles({ isLoggedIn, onLogout, currentPath, handleBookmarkClick }) {
     
     const [ cards, setCards ] = useState([]);
     const articles = cards;
@@ -137,60 +137,7 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
         }
     };
 
-    function onSaveArticle (data) {
-        console.log ('Guardar artículo con ID:', data);
-        if (isLoggedIn) {
-            apiAcces.addArticle(data)
-            .then(addedArticle => {
-                //setCards([addedArticle, ...cards]);
-                    setCards(cards.map(card => 
-                        card.id === data.id ? { 
-                            ...card, 
-                            _id: addedArticle._id,
-                            isSaved: true } : card
-                    ));
-            })
-            .catch(error => console.error('Error al añadir el artículo:', error));
-        } else {
-            return alert('Inicia sesión para guardar artículos');
-        }
-    }
-
-    function onDeleteArticle (data) {
-        console.log ('Eliminar artículo con ID:', data);
-        if (isLoggedIn) {
-            apiAcces.deleteArticle(data._id)
-            .then(() => {
-                setCards(cards.filter(card => card.id !== data.id));    
-            })
-            .catch(error => console.error('Error al eliminar el artículo:', error));
-        }
-    }
-
-    const handleBookmarkClick = (data) => {
-        if (currentPath === "/"){
-            if (data.isSaved) {
-                onDeleteArticle(data);
-            } else {
-                onSaveArticle(data);
-            }  
-        }
-    };
-
-    const handleLoadMore = async () => {
-        setLoadingMore(true);
-        await new Promise(resolve => {
-            setTimeout(() => {
-                resolve();
-            }, 1000);
-        });
-        setVisibleCards(prev => {
-            const newValue = prev + 3;
-            return newValue;
-        });
-            
-        setLoadingMore(false);
-    };
+    
     
     useEffect(() => {
         if (searchQuery && searchKeywords && searchKeywords.length > 0) {
@@ -219,7 +166,7 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
                                         currentPath={currentPath}
-                                        handleBookmarkClick={() => handleBookmarkClick(card)}
+                                        handleBookmarkClick={() => handleBookmarkClick()}
                                         
                                     />
                                 ))}

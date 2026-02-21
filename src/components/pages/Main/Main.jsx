@@ -2,7 +2,7 @@ import { About } from '../../About/About.jsx';
 import { Articles } from '../../Articles/Articles.jsx';
 import './Main.css'
 
-export function Main({isLoggedIn, onLogout, currentPath}) {
+export function Main({isLoggedIn, onLogout, currentPath, handleBookmarkClick}) {
     
     return (
         <main className="main">
@@ -10,7 +10,7 @@ export function Main({isLoggedIn, onLogout, currentPath}) {
                 isLoggedIn={isLoggedIn} 
                 onLogout={onLogout} 
                 currentPath={currentPath} 
-                
+                handleBookmarkClick={handleBookmarkClick}
             >
 
             </Articles>

@@ -127,6 +127,61 @@ function App() {
         });
     };
 
+    function onSaveArticle (data) {
+            console.log ('Guardar artículo con ID:', data);
+            if (isLoggedIn) {
+                apiAcces.addArticle(data)
+                .then(addedArticle => {
+                    //setCards([addedArticle, ...cards]);
+                        setCards(cards.map(card => 
+                            card.id === data.id ? { 
+                                ...card, 
+                                _id: addedArticle._id,
+                                isSaved: true } : card
+                        ));
+                })
+                .catch(error => console.error('Error al añadir el artículo:', error));
+            } else {
+                return alert('Inicia sesión para guardar artículos');
+            }
+        }
+    
+        function onDeleteArticle (data) {
+            console.log ('Eliminar artículo con ID:', data.id);
+            if (isLoggedIn) {
+                apiAcces.deleteArticle(data._id)
+                .then(() => {
+                    setCards(cards.filter(card => card.id !== data.id));    
+                })
+                .catch(error => console.error('Error al eliminar el artículo:', error));
+            }
+        }
+    
+        function handleBookmarkClick (data) {
+            if (currentPath === "/"){
+                if (data.isSaved) {
+                    onDeleteArticle(data);
+                } else {
+                    onSaveArticle(data);
+                }  
+            }
+        };
+    
+        const handleLoadMore = async () => {
+            setLoadingMore(true);
+            await new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
+            });
+            setVisibleCards(prev => {
+                const newValue = prev + 3;
+                return newValue;
+            });
+                
+            setLoadingMore(false);
+        };
+
     useEffect(() => {
         const checkBackground = () => {
         const bgColor = window.getComputedStyle(document.body).backgroundColor;
@@ -212,7 +267,11 @@ function App() {
                                             isName={currentUser?.username || ''}
                                             currentPath="/"
                                         />
-                                        <Main isLoggedIn={isLoggedIn} onLogout={handleLogout} currentPath="/" />
+                                        <Main 
+                                            isLoggedIn={isLoggedIn} 
+                                            onLogout={handleLogout} 
+                                            currentPath="/" 
+                                            handleBookmarkClick={handleBookmarkClick} />
                                         <Footer currentPath="/"/>
                                     </>
                                     
@@ -275,7 +334,8 @@ function App() {
                                             />
                                             <Savednews 
                                                 isLoggedIn={isLoggedIn} 
-                                                onLogout={handleLogout} 
+                                                onLogout={handleLogout}
+                                                handleBookmarkClick={handleBookmarkClick}
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}
                                             />
