@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-dom";
-import { Api } from '../../utils/Api.js';
 import { Card } from '../Card/Card.jsx';
 import { Preloader } from '../Preloader/Preloader.jsx';
 import { IMAGES, API_BASE_URL } from '../../utils/Constants.js';
@@ -15,22 +13,12 @@ export function Articles({
 }) {
     
     const [ cards, setCards ] = useState([]);
-    const articles = cards;
     const [ isSavedArticle, setIsSavedArticle ] = useState(false);
-    //const [visibleCards, setVisibleCards] = useState(3);
-    //const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, setError } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
     const jwt = getToken();
-    const apiAcces = new Api({
-              baseUrl: API_BASE_URL,
-              headers: {
-                    Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${jwt}`, 
-                }
-            });
+    
 
     const findRelevantKeyword = (title, keywords) => {
         if (!title || !keywords || keywords.length === 0) return null;

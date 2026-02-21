@@ -34,6 +34,15 @@ function App() {
     const navigate = useNavigate();
     const location = useLocation();
     
+    const apiAcces = new Api({
+              baseUrl: API_BASE_URL,
+              headers: {
+                    Accept: "application/json",
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${jwt}`, 
+                }
+            });
+
     const openLoginPopup = () => {
         setPopupType('login');
         setIsPopupOpen(true);

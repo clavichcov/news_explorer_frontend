@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation} from "react-router-dom";
 import { Card } from '../Card/Card.jsx';
 import { Preloader } from '../Preloader/Preloader.jsx';
-import {IMAGES, API_BASE_URL} from '../../utils/Constants.js';
+import { IMAGES, API_BASE_URL} from '../../utils/Constants.js';
 import { useSearch } from '../../contexts/SearchContext.jsx';
 import { Api } from '../../utils/Api.js';
 import { getToken} from "../../utils/Token.js";
@@ -15,8 +15,6 @@ export function SavedNewsArticles({
 }) {
     
     const [ cards, setCards ] = useState([]);
-    //const [visibleCards, setVisibleCards] = useState(3);
-    //const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
