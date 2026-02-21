@@ -10,7 +10,7 @@ import { SavedNewsHeader } from './Header/Savednewsheader.jsx';
 import { Footer } from './Footer/Footer.jsx';
 import { Card } from './Card/Card.jsx';
 import { Popup } from './Popup/Popup.jsx';
-import { API_BASE_URL } from '../utils/Constants.js';
+import { IMAGES, API_BASE_URL } from '../utils/Constants.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import Api from '../utils/Api.js';
 import * as auth from '../utils/Auth.js';
