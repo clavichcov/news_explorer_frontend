@@ -8,13 +8,13 @@ import { useSearch } from '../../contexts/SearchContext.jsx';
 import { newsApi } from '../../utils/Thirdpartyapi.js';
 import './Articles.css'
 import { getToken} from "../../utils/Token.js";
-export function Articles({ isLoggedIn, onLogout, currentPath, handleBookmarkClick, handleLoadMore }) {
+export function Articles({ isLoggedIn, onLogout, currentPath, handleBookmarkClick, handleLoadMore, visibleCards, loadingMore }) {
     
     const [ cards, setCards ] = useState([]);
     const articles = cards;
     const [ isSavedArticle, setIsSavedArticle ] = useState(false);
-    const [visibleCards, setVisibleCards] = useState(3);
-    const [loadingMore, setLoadingMore] = useState(false);
+    //const [visibleCards, setVisibleCards] = useState(3);
+    //const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, setError } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});

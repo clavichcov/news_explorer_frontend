@@ -8,11 +8,13 @@ import { Api } from '../../utils/Api.js';
 import { getToken} from "../../utils/Token.js";
 import './Savednewsarticles.css'
 
-export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmarkClick, handleLoadMore }) {
+export function SavedNewsArticles({ 
+    onArticlesLoaded, currentPath, handleBookmarkClick, 
+    handleLoadMore, visibleCards, loadingMore }) {
     
     const [ cards, setCards ] = useState([]);
-    const [visibleCards, setVisibleCards] = useState(3);
-    const [loadingMore, setLoadingMore] = useState(false);
+    //const [visibleCards, setVisibleCards] = useState(3);
+    //const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});

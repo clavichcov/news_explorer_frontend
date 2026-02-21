@@ -268,7 +268,10 @@ function App() {
                                             onLogout={handleLogout} 
                                             currentPath="/" 
                                             handleLoadMore={handleLoadMore}
-                                            handleBookmarkClick={handleBookmarkClick} />
+                                            handleBookmarkClick={handleBookmarkClick}
+                                            visibleCards={visibleCards}
+                                            loadingMore={loadingMore}
+                                        />
                                         <Footer currentPath="/"/>
                                     </>
                                     
@@ -336,6 +339,8 @@ function App() {
                                                 handleBookmarkClick={handleBookmarkClick}
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}
+                                                visibleCards={visibleCards}
+                                                loadingMore={loadingMore}
                                             />
                                             <Footer currentPath="/savednews"/>
                                         </>

@@ -5,7 +5,10 @@ import { SavedNewsArticles } from '../../Articles/Savednewsarticles.jsx';
 import { IMAGES } from '../../../utils/Constants.js';
 import './Savednews.css'
 
-export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded, handleBookmarkClick, handleLoadMore }) {
+export function Savednews({ 
+    isLoggedIn, onLogout, currentPath, onArticlesLoaded, 
+    handleBookmarkClick, handleLoadMore, visibleCards, loadingMore 
+}) {
     
     return (
         <main className="savednews">
@@ -18,6 +21,8 @@ export function Savednews({ isLoggedIn, onLogout, currentPath, onArticlesLoaded,
                 }}
                 handleLoadMore={handleLoadMore}
                 handleBookmarkClick={handleBookmarkClick}
+                visibleCards={visibleCards}
+                loadingMore={loadingMore}
                 currentPath={currentPath}
             ></SavedNewsArticles>
             
