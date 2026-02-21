@@ -12,7 +12,7 @@ export function SavedNewsArticles({ onArticlesLoaded, currentPath, handleBookmar
     
     const [ cards, setCards ] = useState([]);
     const [visibleCards, setVisibleCards] = useState(3);
-    //const [loadingMore, setLoadingMore] = useState(false);
+    const [loadingMore, setLoadingMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
