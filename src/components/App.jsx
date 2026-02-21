@@ -197,7 +197,7 @@ function App() {
             
         };
 
-        const handleBookmarkIcon = () => {
+        const handleBookmarkIcon = (card, currentPath) => {
             if (currentPath === "/savednews") {
                 return IMAGES.bookmark_trash;
             } 
@@ -206,7 +206,7 @@ function App() {
                 return IMAGES.bookmark_disabled;
             }
             
-            return data.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
+            return card.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
         };
 
     useEffect(() => {
