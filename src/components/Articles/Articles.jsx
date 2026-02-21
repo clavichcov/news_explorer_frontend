@@ -144,7 +144,10 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
             .then(addedArticle => {
                 //setCards([addedArticle, ...cards]);
                     setCards(cards.map(card => 
-                        card.id === data.id ? addedArticle : card
+                        card.id === data.id ? { 
+                            ...card, 
+                            _id: addedArticle._id,
+                            isSaved: true } : card
                     ));
             })
             .catch(error => console.error('Error al añadir el artículo:', error));
@@ -156,7 +159,7 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
     function onDeleteArticle (data) {
         console.log ('Eliminar artículo con ID:', data);
         if (isLoggedIn) {
-            apiAcces.deleteArticle(data.id)
+            apiAcces.deleteArticle(data._id)
             .then(() => {
                 setCards(cards.filter(card => card.id !== data.id));    
             })
