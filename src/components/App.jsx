@@ -160,11 +160,11 @@ function App() {
         }
     
         function onDeleteArticle (data) {
-            console.log ('Eliminar artículo con ID:', data.id);
+            console.log ('Eliminar artículo con ID:', data._id);
             if (isLoggedIn) {
                 apiAcces.deleteArticle(data._id)
                 .then(() => {
-                    setCards(cards.filter(card => card.id !== data.id));    
+                    setCards(cards.filter(card => card.id !== data._id));    
                 })
                 .catch(error => console.error('Error al eliminar el artículo:', error));
             }
