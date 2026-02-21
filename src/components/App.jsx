@@ -164,7 +164,7 @@ function App() {
             if (isLoggedIn) {
                 apiAcces.deleteArticle(data._id)
                 .then(() => {
-                    setCards(cards.filter(card => card.id !== data._id));    
+                    setCards(cards.filter(card => card._id !== data._id));    
                 })
                 .catch(error => console.error('Error al eliminar el artículo:', error));
             }
