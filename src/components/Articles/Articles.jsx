@@ -144,7 +144,7 @@ export function Articles({ isLoggedIn, onLogout, currentPath }) {
             .then(addedArticle => {
                 //setCards([addedArticle, ...cards]);
                     setCards(cards.map(card => 
-                        card.id === data.id ? { ...card, isSaved: true } : card
+                        card.id === data.id ? addedArticle : card
                     ));
             })
             .catch(error => console.error('Error al añadir el artículo:', error));
