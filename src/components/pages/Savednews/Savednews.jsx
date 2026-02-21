@@ -7,7 +7,8 @@ import './Savednews.css'
 
 export function Savednews({ 
     isLoggedIn, onLogout, currentPath, onArticlesLoaded, 
-    handleBookmarkClick, handleLoadMore, visibleCards, loadingMore 
+    handleBookmarkClick, handleLoadMore, visibleCards, loadingMore,
+    setVisibleCards, setLoadingMore
 }) {
     
     return (
@@ -22,7 +23,9 @@ export function Savednews({
                 handleLoadMore={handleLoadMore}
                 handleBookmarkClick={handleBookmarkClick}
                 visibleCards={visibleCards}
+                setVisibleCards={setVisibleCards}
                 loadingMore={loadingMore}
+                setLoadingMore={setLoadingMore}
                 currentPath={currentPath}
             ></SavedNewsArticles>
             

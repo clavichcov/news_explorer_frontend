@@ -10,7 +10,9 @@ import './Savednewsarticles.css'
 
 export function SavedNewsArticles({ 
     onArticlesLoaded, currentPath, handleBookmarkClick, 
-    handleLoadMore, visibleCards, loadingMore }) {
+    handleLoadMore, visibleCards, loadingMore,
+    setVisibleCards, setLoadingMore
+}) {
     
     const [ cards, setCards ] = useState([]);
     //const [visibleCards, setVisibleCards] = useState(3);

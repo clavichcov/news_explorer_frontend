@@ -270,7 +270,9 @@ function App() {
                                             handleLoadMore={handleLoadMore}
                                             handleBookmarkClick={handleBookmarkClick}
                                             visibleCards={visibleCards}
+                                            setVisibleCards={setVisibleCards}
                                             loadingMore={loadingMore}
+                                            setLoadingMore={setLoadingMore}
                                         />
                                         <Footer currentPath="/"/>
                                     </>
@@ -340,7 +342,9 @@ function App() {
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}
                                                 visibleCards={visibleCards}
+                                                setVisibleCards={setVisibleCards}
                                                 loadingMore={loadingMore}
+                                                setLoadingMore={setLoadingMore}
                                             />
                                             <Footer currentPath="/savednews"/>
                                         </>
