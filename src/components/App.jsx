@@ -233,8 +233,8 @@ function App() {
                 apiInstance.getUserInfo()
                     .then((userData) => {
                         setCurrentUser({
-                            username: userData.data.name,
-                            email: userData.data.email
+                            username: userData.name,
+                            email: userData.email
                         });
                         setIsLoggedIn(true);
                     })
