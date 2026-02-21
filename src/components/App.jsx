@@ -29,7 +29,8 @@ function App() {
     const [currentPath, setCurrentPath] = useState("/");
     const [savedArticles, setSavedArticles] = useState([]);
     const [loadingMore, setLoadingMore] = useState(false);
-    const [visibleCards, setVisibleCards] = useState(3);
+    const [visibleCardsHome, setVisibleCardsHome] = useState(3);
+    const [visibleCardsSaved, setVisibleCardsSaved] = useState(3);
     const navigate = useNavigate();
     const location = useLocation();
     
@@ -171,11 +172,16 @@ function App() {
     
         const handleLoadMore = () => {
             setLoadingMore(true);
-            
             setTimeout(() => {
-                setVisibleCards(prev => prev + 3);
+                if (currentPath === "/") {
+                    setVisibleCardsHome(prev => prev + 3);
+                }
+                    else if (currentPath === "/savednews") {
+                        setVisibleCardsSaved(prev => prev + 3);
+                    }
                 setLoadingMore(false);
             }, 1000);
+            
         };
 
     useEffect(() => {
@@ -269,8 +275,8 @@ function App() {
                                             currentPath="/" 
                                             handleLoadMore={handleLoadMore}
                                             handleBookmarkClick={handleBookmarkClick}
-                                            visibleCards={visibleCards}
-                                            setVisibleCards={setVisibleCards}
+                                            visibleCards={visibleCardsHome}
+                                            setVisibleCards={setVisibleCardsHome}
                                             loadingMore={loadingMore}
                                             setLoadingMore={setLoadingMore}
                                         />
@@ -341,8 +347,8 @@ function App() {
                                                 handleBookmarkClick={handleBookmarkClick}
                                                 currentPath="/savednews"
                                                 onArticlesLoaded={setSavedArticles}
-                                                visibleCards={visibleCards}
-                                                setVisibleCards={setVisibleCards}
+                                                visibleCards={visibleCardsSaved}
+                                                setVisibleCards={setVisibleCardsSaved}
                                                 loadingMore={loadingMore}
                                                 setLoadingMore={setLoadingMore}
                                             />
