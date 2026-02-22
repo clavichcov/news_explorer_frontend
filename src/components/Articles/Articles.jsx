@@ -99,6 +99,7 @@ export function Articles({
                         description: article.description,
                         publishedAt: article.publishedAt,
                         source: { name: article.source?.name },
+                        isSaved: false,
                         keyword: keyword
                     }));
                     allArticles = [...allArticles, ...formattedArticles];

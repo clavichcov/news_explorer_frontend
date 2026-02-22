@@ -199,6 +199,14 @@ function App() {
                     } else {
                         onSaveArticle(tarjetaActual);
                     }  
+            } else {
+                console.log('Tarjeta no encontrada en estado, usando data original');
+                
+                if (data.isSaved || data._id) {
+                    onDeleteArticle(data);
+                } else {
+                    onSaveArticle(data);
+                }
             }
             if (currentPathOnClick === "/savednews") {
                 onDeleteArticle(data);
