@@ -65,7 +65,7 @@ export function LoginPopup({handleLogin}) {
            email.trim() && password.trim();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     
     const emailError = validateField("email", email);
