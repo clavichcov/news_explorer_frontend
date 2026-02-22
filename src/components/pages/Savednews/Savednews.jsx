@@ -30,6 +30,7 @@ export function Savednews({
                 currentPath={currentPath}
                 cards={cards}
                 setCards={setCards}
+                savedArticles={savedArticles}
             ></SavedNewsArticles>
             
         </main>
