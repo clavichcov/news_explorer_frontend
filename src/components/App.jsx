@@ -145,12 +145,23 @@ function App() {
             if (isLoggedIn) {
                 apiAcces.addArticle(data)
                 .then(addedArticle => {
-                    setCards(cards.map(card => 
-                        card.id === data.id ? { 
-                            ...card, 
-                            _id: addedArticle._id,
-                            isSaved: true } : card
-                    ));
+                    setCards(prevCards => {
+                        return prevCards.map(card => 
+                            card.id === data.id ? { 
+                                ...card, 
+                                _id: addedArticle._id,
+                                isSaved: true 
+                            } : card
+                        );
+                    
+                    });
+                    setTimeout(() => {
+                        setCards(prevCards => {
+                            const updatedCard = prevCards.find(c => c.id === data.id);
+                            console.log('Verificación - Tarjeta después de guardar:', updatedCard);
+                            return prevCards;
+                        });
+                    }, 100);
                 })
                 .catch(error => console.error('Error al añadir el artículo:', error));
             } else {
@@ -172,12 +183,22 @@ function App() {
         }
     
         function handleBookmarkClick (data, currentPathOnClick) {
+            console.log('handleBookmarkClick - data recibida:', {
+                id: data.id,
+                isSaved: data.isSaved,
+                tiene_id: !!data._id,
+                dataCompleta: data
+            });
             if (currentPathOnClick === "/"){
-                if (data.isSaved) {
-                    onDeleteArticle(data);
-                } else {
-                    onSaveArticle(data);
-                }  
+                const tarjetaActual = cards.find(c => c.id === data.id);
+                if (tarjetaActual) {
+                    console.log('Tarjeta actual encontrada:', tarjetaActual);
+                }
+                    if (tarjetaActual.isSaved || tarjetaActual._id) {
+                        onDeleteArticle(data);
+                    } else {
+                        onSaveArticle(data);
+                    }  
             }
             if (currentPathOnClick === "/savednews") {
                 onDeleteArticle(data);
