@@ -174,13 +174,15 @@ function App() {
             if (isLoggedIn) {
                 apiAcces.deleteArticle(data._id)
                 .then(() => {
-                    setCards(prevCards => prevCards.map(card => 
-                        card._id === data._id ? { 
-                            ...card, 
-                            isSaved: false,
-                            _id: undefined  // Quitar el _id de MongoDB
-                        } : card
-                    ));
+                    if (currentPath === "/") {
+                        setCards(prevCards => prevCards.map(card => 
+                            card._id === data._id ? { 
+                                ...card, 
+                                isSaved: false,
+                                _id: undefined  // Quitar el _id de MongoDB
+                            } : card
+                        ));
+                    }
                     if (currentPath === "/savednews") {
                             setCards(prevCards => prevCards.filter(card => card._id !== data._id));
                             setSavedArticles(prev => prev.filter(article => article._id !== data._id)); 
