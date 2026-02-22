@@ -182,7 +182,8 @@ function App() {
                         } : card
                     ));
                     if (currentPath === "/savednews") {
-                         setSavedArticles(prev => prev.filter(article => article._id !== data._id)); 
+                            setCards(prevCards => prevCards.filter(card => card._id !== data._id));
+                            setSavedArticles(prev => prev.filter(article => article._id !== data._id)); 
                     }
                      
                 })
