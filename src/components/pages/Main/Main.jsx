@@ -6,7 +6,7 @@ export function Main({
     isLoggedIn, onLogout, currentPath, 
     handleBookmarkClick, handleBookmarkIcon, handleLoadMore, 
     visibleCardsHome, loadingMore, 
-    setVisibleCardsHome, setLoadingMore
+    setVisibleCardsHome, setLoadingMore, cards, setCards
 }) {
     
     return (
@@ -22,6 +22,8 @@ export function Main({
                 setVisibleCardsHome={setVisibleCardsHome}
                 loadingMore={loadingMore}
                 setLoadingMore={setLoadingMore}
+                cards={cards}
+                setCards={setCards}
             >
 
             </Articles>
