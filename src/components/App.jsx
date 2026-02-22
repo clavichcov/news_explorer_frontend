@@ -174,7 +174,7 @@ function App() {
             if (isLoggedIn) {
                 apiAcces.deleteArticle(data._id)
                 .then(() => {
-                    setCards(cards.filter(card => card._id !== data._id));
+                    setCards(prevCards => prevCards.filter(card => card._id !== data._id));
                     setSavedArticles(prev => prev.filter(article => article._id !== data._id));
                      
                 })
@@ -195,9 +195,9 @@ function App() {
                     console.log('Tarjeta actual encontrada:', tarjetaActual);
                 }
                     if (tarjetaActual.isSaved || tarjetaActual._id) {
-                        onDeleteArticle(data);
+                        onDeleteArticle(tarjetaActual);
                     } else {
-                        onSaveArticle(data);
+                        onSaveArticle(tarjetaActual);
                     }  
             }
             if (currentPathOnClick === "/savednews") {
