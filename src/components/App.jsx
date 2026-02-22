@@ -193,26 +193,26 @@ function App() {
                 const tarjetaActual = cards.find(c => c.id === data.id);
                 if (tarjetaActual) {
                     console.log('Tarjeta actual encontrada:', tarjetaActual);
-                }
+                
                     if (tarjetaActual.isSaved || tarjetaActual._id) {
                         onDeleteArticle(tarjetaActual);
                     } else {
                         onSaveArticle(tarjetaActual);
                     }  
-            } else {
-                console.log('Tarjeta no encontrada en estado, usando data original');
-                
-                if (data.isSaved || data._id) {
-                    onDeleteArticle(data);
                 } else {
-                    onSaveArticle(data);
+                    console.log('Tarjeta no encontrada en estado, usando data original');
+                
+                    if (data.isSaved || data._id) {
+                        onDeleteArticle(data);
+                    } else {
+                        onSaveArticle(data);
+                    }
                 }
-            }
-            if (currentPathOnClick === "/savednews") {
-                onDeleteArticle(data);
-            }
-        };
-    
+                
+            } else if (currentPathOnClick === "/savednews") {
+                    onDeleteArticle(data);
+                }
+        }
         const handleLoadMore = (currentPathOnClick) => {
             setLoadingMore(true);
             setTimeout(() => {

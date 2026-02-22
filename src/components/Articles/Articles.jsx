@@ -94,6 +94,7 @@ export function Articles({
                     const keyword = keywords[index];
                     const formattedArticles = data.articles.map((article, i) => ({
                         id: `${keyword}-${i}-${Date.now()}-${Math.random()}`,
+                        url: article.url,
                         urlToImage: article.urlToImage,
                         title: article.title,
                         description: article.description,
