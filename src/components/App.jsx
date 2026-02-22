@@ -179,7 +179,7 @@ function App() {
                             card._id === data._id ? { 
                                 ...card, 
                                 isSaved: false,
-                                _id: undefined  // Quitar el _id de MongoDB
+                                _id: undefined 
                             } : card
                         ));
                     }
@@ -214,14 +214,14 @@ function App() {
                     console.log('Tarjeta no encontrada en estado, usando data original');
                 
                     if (data.isSaved || data._id) {
-                        onDeleteArticle(data, currentPath);
+                        onDeleteArticle(data, currentPathOnClick);
                     } else {
                         onSaveArticle(data);
                     }
                 }
                 
             } else if (currentPathOnClick === "/savednews") {
-                    onDeleteArticle(data, currentPath);
+                    onDeleteArticle(data, currentPathOnClick);
                 }
         }
         const handleLoadMore = (currentPathOnClick) => {
