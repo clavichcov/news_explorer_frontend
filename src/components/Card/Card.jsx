@@ -25,6 +25,10 @@ export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkCli
         
     }
 
+    function handleOnClick() {
+        handleBookmarkClick(data, currentPath);
+    }
+
     useEffect(() => {
         if (tooltipRef.current) {
             if (isHovered) {
@@ -53,11 +57,9 @@ export function Card({data, isLoggedIn, onLogout, currentPath, handleBookmarkCli
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                             
-                            onClick={() => {
-                                handleBookmarkClick(data);
-                            }}
+                            onClick={handleOnClick}
                             >
-                            <img src={handleBookmarkIcon()}
+                            <img src={handleBookmarkIcon(data, currentPath)}
                                  alt="Icono de marcador" 
                             />
                         </button>

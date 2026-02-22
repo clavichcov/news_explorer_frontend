@@ -158,8 +158,8 @@ export function Articles({
                                         isLoggedIn={isLoggedIn} 
                                         onLogout={onLogout} 
                                         currentPath={currentPath}
-                                        handleBookmarkClick={() => handleBookmarkClick(card, currentPath)}
-                                        handleBookmarkIcon={() => handleBookmarkIcon(card, currentPath)}
+                                        handleBookmarkClick={handleBookmarkClick}
+                                        handleBookmarkIcon={handleBookmarkIcon}
                                     />
                                 ))}
                             </div>

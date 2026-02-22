@@ -227,8 +227,8 @@ function App() {
             if (!isLoggedIn) {
                 return IMAGES.bookmark_disabled;
             }
-            
-            return card.isSaved ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
+            const estaGuardado = card.isSaved || card._id;
+            return estaGuardado ? IMAGES.bookmark_saved : IMAGES.bookmark_active;
         };
 
     useEffect(() => {
