@@ -408,7 +408,7 @@ function App() {
                             <Route 
                                 path="/savednews" 
                                 element={
-                                    <ProtectedRoute isLoggedIn={isLoggedIn}>
+                                    <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
                                         <>
                                             <SavedNewsHeader 
                                                 isLoggedIn={isLoggedIn} 
