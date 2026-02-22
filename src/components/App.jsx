@@ -277,15 +277,23 @@ function App() {
                         });
                         setIsLoggedIn(true);
                     })
-                                    .catch((error) => {
-                    console.error('Error al verificar token:', error);
-                    if (error.status === 401) {
-                        removeToken();
-                        setIsLoggedIn(false);
-                        setCurrentUser(null);
-                    }
-                });
-            }
+                    .catch((error) => {
+                        console.error('Error al verificar token:', error);
+                        if (error.status === 401) {
+                            removeToken();
+                            setIsLoggedIn(false);
+                            setCurrentUser(null);
+                        }
+                    })
+                    .finally(() => {
+                        setIsLoading(false);
+                    });
+                } else {
+                    setIsLoading(false);
+                    
+                }
+        } else {
+            setIsLoading(false);
         }
     }, []);
     useEffect(() => {
