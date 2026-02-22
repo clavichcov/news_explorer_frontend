@@ -10,10 +10,6 @@ export function LoginPopup({handleLogin}) {
     email: "",
     password: ""
   });
-  const [touched, setTouched] = useState({
-    email: false,
-    password: false
-  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -41,37 +37,32 @@ export function LoginPopup({handleLogin}) {
     
     if (name === "email-input") {
       setEmail(value);
+      setErrors(prev => ({ ...prev, email: validateField("email", value) }));
     } else if (name === "password-input") {
       setPassword(value);
+      setErrors(prev => ({ ...prev, password: validateField("password", value) }));
     }
-    
-    const fieldName = name === "email-input" ? "email" : "password";
-    const error = validateField(fieldName, value);
-    setErrors(prev => ({ ...prev, [fieldName]: error }));
+    if (serverError) setServerError("");
   };
 
-  const handleBlur = (e) => {
+  /*const handleBlur = (e) => {
     const { name, value } = e.target;
     const fieldName = name === "email-input" ? "email" : "password";
     const error = validateField(fieldName, value);
     setErrors(prev => ({ ...prev, [fieldName]: error }));
     setTouched(prev => ({ ...prev, [fieldName]: true }));
-  };
+  };*/
 
   const isFormValid = () => {
-    if (!touched.email || !touched.password) {
-      return false;
-    }
-    
-    if (errors.email || errors.password || serverError) {
-      return false;
-    }
-    
-    if (!email.trim() || !password.trim()) {
-      return false;
-    }
-    
-    return true;
+    const emailError = validateField("email", email);
+    const passwordError = validateField("password", password);
+    setErrors({
+      email: emailError,
+      password: passwordError,
+      
+    });
+    return !emailError && !passwordError &&  
+           email.trim() && password.trim();
   };
 
   const handleSubmit = (e) => {
@@ -88,11 +79,13 @@ export function LoginPopup({handleLogin}) {
     if (emailError || passwordError) {
       return;
     }
-    
-    
-    handleLogin({ email, password });
-
-  };
+    try {
+      setServerError(""); 
+      await handleLogin({ email, password });
+    } catch (error) {
+        setServerError(error.message || "Error en el inicio de sesión. Intenta nuevamente.");
+      }
+   };
   
   const handleOpenRegister = () => {
         navigate('/signup');

@@ -12,11 +12,6 @@ export function RegisterPopup({handleRegister}) {
     password: "",
     name: ""
   });
-  const [touched, setTouched] = useState({
-    email: false,
-    password: false,
-    name: false
-  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -49,20 +44,18 @@ export function RegisterPopup({handleRegister}) {
     
     if (name === "email-input") {
       setEmail(value);
+      setErrors(prev => ({ ...prev, email: validateField("email", value) }));
     } else if (name === "password-input") {
         setPassword(value);
+        setErrors(prev => ({ ...prev, password: validateField("password", value) }));
     } else if (name === "name-input") {
         setName(value);
+        setErrors(prev => ({ ...prev, name: validateField("name", value) }));
     }
-    
-    const fieldName = name === "email-input" ? "email" : 
-                  name === "password-input" ? "password" : 
-                  "name";
-    const error = validateField(fieldName, value);
-    setErrors(prev => ({ ...prev, [fieldName]: error }));
+    if (serverError) setServerError("");
   };
 
-  const handleBlur = (e) => {
+  /*const handleBlur = (e) => {
     const { name, value } = e.target;
     const fieldName = name === "email-input" ? "email" : 
                   name === "password-input" ? "password" : 
@@ -70,22 +63,19 @@ export function RegisterPopup({handleRegister}) {
     const error = validateField(fieldName, value);
     setErrors(prev => ({ ...prev, [fieldName]: error }));
     setTouched(prev => ({ ...prev, [fieldName]: true }));
-  };
+  };*/
 
   const isFormValid = () => {
-    if (!touched.email || !touched.password || !touched.name) {
-      return false;
-    }
-    
-    if (errors.email || errors.password || errors.name || serverError) {
-      return false;
-    }
-    
-    if (!email.trim() || !password.trim() || !name.trim()) {
-      return false;
-    }
-    
-    return true;
+    const emailError = validateField("email", email);
+    const passwordError = validateField("password", password);
+    const nameError = validateField("name", name);
+    setErrors({
+      email: emailError,
+      password: passwordError,
+      name: nameError
+    });
+    return !emailError && !passwordError && !nameError && 
+           email.trim() && password.trim() && name.trim();
   };
 
   const handleSubmit = async(e) => {
