@@ -335,6 +335,8 @@ function App() {
                                             setVisibleCardsHome={setVisibleCardsHome}
                                             loadingMore={loadingMore}
                                             setLoadingMore={setLoadingMore}
+                                            cards={cards}
+                                            setCards={setCards}
                                         />
                                         <Footer currentPath="/"/>
                                     </>

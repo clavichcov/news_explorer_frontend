@@ -9,21 +9,17 @@ import './Articles.css'
 export function Articles({ 
     isLoggedIn, onLogout, currentPath, 
     handleBookmarkClick, handleBookmarkIcon, handleLoadMore, 
-    visibleCardsHome, loadingMore, setVisibleCardsHome, setLoadingMore 
+    visibleCardsHome, loadingMore, setVisibleCardsHome, setLoadingMore,
+    cards, setCards 
 }) {
-    
-    const [ cards, setCards ] = useState([]);
     const [ isSavedArticle, setIsSavedArticle ] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, setError } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
     
-    
-
     const findRelevantKeyword = (title, keywords) => {
         if (!title || !keywords || keywords.length === 0) return null;
         const titleLower = title.toLowerCase();
-        
         
         for (const keyword of keywords) {
             if (titleLower.includes(keyword.toLowerCase())) {
@@ -162,6 +158,8 @@ export function Articles({
                                         currentPath={currentPath}
                                         handleBookmarkClick={handleBookmarkClick}
                                         handleBookmarkIcon={handleBookmarkIcon}
+                                        cards={cards}
+                                        setCards={setCards}
                                     />
                                 ))}
                             </div>
