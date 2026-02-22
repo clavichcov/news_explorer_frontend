@@ -149,7 +149,7 @@ function App() {
                         return prevCards.map(card => 
                             card.id === data.id ? { 
                                 ...card, 
-                                _id: addedArticle._id,
+                                _id: addedArticle._id || addedArticle.id || addedArticle.data?._id,
                                 isSaved: true 
                             } : card
                         );
@@ -169,13 +169,21 @@ function App() {
             }
         }
     
-        function onDeleteArticle (data) {
+        function onDeleteArticle (data, currentPath) {
             console.log ('Eliminar artículo con ID:', data._id);
             if (isLoggedIn) {
                 apiAcces.deleteArticle(data._id)
                 .then(() => {
-                    setCards(prevCards => prevCards.filter(card => card._id !== data._id));
-                    setSavedArticles(prev => prev.filter(article => article._id !== data._id));
+                    setCards(prevCards => prevCards.map(card => 
+                        card._id === data._id ? { 
+                            ...card, 
+                            isSaved: false,
+                            _id: undefined  // Quitar el _id de MongoDB
+                        } : card
+                    ));
+                    if (currentPath === "/savednews") {
+                         setSavedArticles(prev => prev.filter(article => article._id !== data._id)); 
+                    }
                      
                 })
                 .catch(error => console.error('Error al eliminar el artículo:', error));
@@ -195,7 +203,7 @@ function App() {
                     console.log('Tarjeta actual encontrada:', tarjetaActual);
                 
                     if (tarjetaActual.isSaved || tarjetaActual._id) {
-                        onDeleteArticle(tarjetaActual);
+                        onDeleteArticle(tarjetaActual, currentPathOnClick);
                     } else {
                         onSaveArticle(tarjetaActual);
                     }  
@@ -203,14 +211,14 @@ function App() {
                     console.log('Tarjeta no encontrada en estado, usando data original');
                 
                     if (data.isSaved || data._id) {
-                        onDeleteArticle(data);
+                        onDeleteArticle(data, currentPath);
                     } else {
                         onSaveArticle(data);
                     }
                 }
                 
             } else if (currentPathOnClick === "/savednews") {
-                    onDeleteArticle(data);
+                    onDeleteArticle(data, currentPath);
                 }
         }
         const handleLoadMore = (currentPathOnClick) => {
