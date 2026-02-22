@@ -421,6 +421,8 @@ function App() {
                                                 setVisibleCardsSaved={setVisibleCardsSaved}
                                                 loadingMore={loadingMore}
                                                 setLoadingMore={setLoadingMore}
+                                                cards={cards}
+                                                setCards={setCards}
                                             />
                                             <Footer currentPath="/savednews"/>
                                         </>

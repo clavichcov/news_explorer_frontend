@@ -11,15 +11,12 @@ import './Savednewsarticles.css'
 export function SavedNewsArticles({ 
     onArticlesLoaded, currentPath, handleBookmarkClick, handleBookmarkIcon,
     handleLoadMore, visibleCardsSaved, loadingMore,
-    setVisibleCardsSaved, setLoadingMore
+    setVisibleCardsSaved, setLoadingMore, cards, setCards
 }) {
-    
-    const [ cards, setCards ] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const { searchQuery, searchKeywords, isSearching, searchResults, updateResults, setError, performSearch } = useSearch();
     const [articlesByKeyword, setArticlesByKeyword] = useState({});
 
-    
     useEffect(() => {
         const fetchSavedArticles = async () => {
             setIsLoading(true);
