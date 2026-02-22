@@ -148,7 +148,7 @@ export function Articles({
                         </div>
                     ) : null}
                     
-                    {!isLoading && cards.length > 0 ? (
+                    {!isLoading && cards?.length > 0 ? (
                         <div className="articles__container">
                             <div className="articles__cards">
                                 {cards.slice(0, visibleCardsHome).map(card => (
@@ -168,7 +168,7 @@ export function Articles({
                                     <Preloader text="Cargando más artículos..." />
                                 </div>
                             )}
-                            {visibleCardsHome < cards.length && (
+                            {visibleCardsHome < (cards?.length || 0) && (
                                 <button className="articles__button" onClick={() => handleLoadMore(currentPath)}>
                                     Ver más
                                 </button>
@@ -176,13 +176,13 @@ export function Articles({
                         </div>
                     ) : null}
                     
-                    {!isLoading && cards.length === 0 && !searchQuery && (
+                    {!isLoading && (cards?.length || 0) === 0 && !searchQuery && (
                         <div className="articles__initial">
                             <p>Realiza una búsqueda para ver artículos aquí.</p>
                         </div>
                     )}
                     
-                    {!isLoading && cards.length === 0 && searchQuery && (
+                    {!isLoading && (cards?.length || 0) === 0 && searchQuery && (
                         <div className="articles__notfound">
                             <img className="articles__notfound--image" src={IMAGES.notfound} alt="Imagen lupa carita triste"/>
                             <h3 className="articles__notfound--title">No se han encontrado artículos</h3>
