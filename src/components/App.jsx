@@ -31,6 +31,7 @@ function App() {
     const [ cards, setCards ] = useState([]);
     const [savedArticles, setSavedArticles] = useState([]);
     const [loadingMore, setLoadingMore] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [visibleCardsHome, setVisibleCardsHome] = useState(3);
     const [visibleCardsSaved, setVisibleCardsSaved] = useState(3);
     const navigate = useNavigate();
