@@ -53,7 +53,7 @@ export function SavedNewsArticles({
                         <Preloader />
                     ) : null}
                     
-                    {!isLoading && cards.length > 0 ? (
+                    {!isLoading && cards?.length > 0 ? (
                         <div className="articles__container">
                             <div className="articles__cards">
                                 {cards.slice(0, visibleCardsSaved).map(card => (
@@ -71,7 +71,7 @@ export function SavedNewsArticles({
                                     <Preloader text="Cargando más artículos..." />
                                 </div>
                             )}
-                            {visibleCardsSaved < cards.length && (
+                            {visibleCardsSaved < (cards?.length || 0) && (
                                 <button className="articles__button" onClick={() => handleLoadMore(currentPath)}>
                                     Ver más
                                 </button>
