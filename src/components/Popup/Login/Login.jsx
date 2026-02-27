@@ -107,7 +107,6 @@ export function LoginPopup({handleLogin}) {
           id="email-input"
           value={email}
           onChange={handleChange}
-          onBlur={handleBlur}
           maxLength="30"
           minLength="2"
           name="email-input"
@@ -129,7 +128,6 @@ export function LoginPopup({handleLogin}) {
           id="password-input"
           value={password}
           onChange={handleChange}
-          onBlur={handleBlur}
           name="password-input"
           placeholder="Introduce tu contraseña"
           required
