@@ -109,7 +109,6 @@ export function RegisterPopup({handleRegister}) {
           id="email-input"
           value={email}
           onChange={handleChange}
-          onBlur={handleBlur}
           maxLength="30"
           minLength="2"
           name="email-input"
@@ -131,7 +130,6 @@ export function RegisterPopup({handleRegister}) {
           id="password-input"
           value={password}
           onChange={handleChange}
-          onBlur={handleBlur}
           name="password-input"
           placeholder="Introduce tu contraseña"
           required
@@ -151,7 +149,6 @@ export function RegisterPopup({handleRegister}) {
           id="name-input"
           value={name}
           onChange={handleChange}
-          onBlur={handleBlur}
           maxLength="30"
           minLength="2"
           name="name-input"
