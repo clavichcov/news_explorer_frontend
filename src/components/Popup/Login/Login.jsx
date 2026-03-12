@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useMemo, useCallback } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Login.css';
 export function LoginPopup({handleLogin}) {
   const [email, setEmail] = useState("");
@@ -10,8 +10,7 @@ export function LoginPopup({handleLogin}) {
     password: ""
   });
   const navigate = useNavigate();
-  const location = useLocation();
-
+  
   const validateField = useCallback((fieldName, value) => {
     let error = "";
     
@@ -44,7 +43,7 @@ export function LoginPopup({handleLogin}) {
     if (serverError) setServerError("");
   };
 
-  const isFormValid = useMemo(() => {
+  const formValidity = useMemo(() => {
     const emailError = validateField("email", email);
     const passwordError = validateField("password", password);
     
@@ -127,9 +126,10 @@ export function LoginPopup({handleLogin}) {
         </span>
       </label>
       <button 
-        className={isFormValid() ? 'form__login_submit-enabled' : 'form__login_submit-disabled'}
+        className={formValidity.isValid ? 
+          'form__login_submit-enabled' : 'form__login_submit-disabled'}
         type="submit"
-        disabled={!isFormValid()}
+        disabled={!formValidity.isValid}
       >
         Iniciar sesión
       </button>
