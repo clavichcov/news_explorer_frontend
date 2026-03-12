@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import './Login.css';
 export function LoginPopup({handleLogin}) {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState({
@@ -13,7 +12,7 @@ export function LoginPopup({handleLogin}) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const validateField = (fieldName, value) => {
+  const validateField = useCallback((fieldName, value) => {
     let error = "";
     
     if (!value.trim()) {
@@ -30,7 +29,7 @@ export function LoginPopup({handleLogin}) {
     }
     
     return error;
-  };
+  },[]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,51 +44,38 @@ export function LoginPopup({handleLogin}) {
     if (serverError) setServerError("");
   };
 
-  /*const handleBlur = (e) => {
-    const { name, value } = e.target;
-    const fieldName = name === "email-input" ? "email" : "password";
-    const error = validateField(fieldName, value);
-    setErrors(prev => ({ ...prev, [fieldName]: error }));
-    setTouched(prev => ({ ...prev, [fieldName]: true }));
-  };*/
-
-  const isFormValid = () => {
+  const isFormValid = useMemo(() => {
     const emailError = validateField("email", email);
     const passwordError = validateField("password", password);
-    setErrors({
-      email: emailError,
-      password: passwordError,
-      
-    });
-    return !emailError && !passwordError &&  
-           email.trim() && password.trim();
-  };
+    
+    return {
+      isValid: !emailError && !passwordError && email.trim() && password.trim(),
+      emailError,
+      passwordError
+    };
+  }, [email, password, validateField]);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const emailError = validateField("email", email);
-    const passwordError = validateField("password", password);
-    
     setErrors({
-      email: emailError,
-      password: passwordError
+      email: formValidity.emailError,
+      password: formValidity.passwordError
     });
-    
-    if (emailError || passwordError) {
+    if (!formValidity.isValid) {
       return;
     }
+    
     try {
       setServerError(""); 
       await handleLogin({ email, password });
     } catch (error) {
-        setServerError(error.message || "Error en el inicio de sesión. Intenta nuevamente.");
-      }
-   };
+      setServerError(error.message || "Error en el inicio de sesión. Intenta nuevamente.");
+    }
+  };
   
   const handleOpenRegister = () => {
         navigate('/signup');
-        //setPopupType('login');
+        
     }
   
   return (
