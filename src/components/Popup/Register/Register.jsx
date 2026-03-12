@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Register.css';
 export function RegisterPopup({handleRegister}) {
@@ -13,9 +13,8 @@ export function RegisterPopup({handleRegister}) {
     name: ""
   });
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const validateField = (fieldName, value) => {
+  
+  const validateField = useCallback((fieldName, value) => {
     let error = "";
     
     if (!value.trim()) {
@@ -37,7 +36,7 @@ export function RegisterPopup({handleRegister}) {
     
     
     return error;
-  };
+  },[]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,28 +54,19 @@ export function RegisterPopup({handleRegister}) {
     if (serverError) setServerError("");
   };
 
-  /*const handleBlur = (e) => {
-    const { name, value } = e.target;
-    const fieldName = name === "email-input" ? "email" : 
-                  name === "password-input" ? "password" : 
-                  "name";
-    const error = validateField(fieldName, value);
-    setErrors(prev => ({ ...prev, [fieldName]: error }));
-    setTouched(prev => ({ ...prev, [fieldName]: true }));
-  };*/
-
-  const isFormValid = () => {
+  const formValidity = useMemo(() => {
     const emailError = validateField("email", email);
     const passwordError = validateField("password", password);
     const nameError = validateField("name", name);
-    setErrors({
-      email: emailError,
-      password: passwordError,
-      name: nameError
-    });
-    return !emailError && !passwordError && !nameError && 
-           email.trim() && password.trim() && name.trim();
-  };
+    
+    return {
+      isValid: !emailError && !passwordError && !nameError 
+      && email.trim() && password.trim() && name.trim(),
+      emailError,
+      passwordError,
+      nameError
+    };
+  }, [email, password, name, validateField]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -86,12 +76,12 @@ export function RegisterPopup({handleRegister}) {
     const nameError = validateField("name", name);
     
     setErrors({
-      email: emailError,
-      password: passwordError,
-      name: nameError
+      email: formValidity.emailError,
+      password: formValidity.passwordError,
+      name: formValidity.nameError
     });
     
-    if (emailError || passwordError || nameError) {
+    if (!formValidity.isValid) {
       return;
     }
     try {
@@ -185,9 +175,10 @@ export function RegisterPopup({handleRegister}) {
           </span>
         )}
       <button 
-        className={isFormValid() ? 'form__login_submit-enabled' : 'form__login_submit-disabled'}
+        className={formValidity.isValid ? 
+          'form__login_submit-enabled' : 'form__login_submit-disabled'}
         type="submit"
-        disabled={!isFormValid()}
+        disabled={!formValidity.isValid}
       >
         Inscribirse
       </button>
